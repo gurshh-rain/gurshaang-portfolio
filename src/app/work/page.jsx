@@ -6,12 +6,6 @@ import { useState } from "react";
 
 const Work = () => {
     useRevealer();
-
-    const [visible, setVisible] = useState(true);
-
-  function close() {
-    setVisible(false);
-  }
     return (
         <>
             <div className="revealer"></div>
@@ -49,16 +43,6 @@ const Work = () => {
                     </table>
                 </div>
 
-            </div>
-
-            <div className={visible ? "container" : "container hidden"}>
-                <div className="popUp">
-                    <button className="btn" onClick={close}>CLOSE</button>
-                    <div className="ggill">
-                        <h1>GURSHAAN GILL PORTFOLIO 025</h1>
-                        <h1 className="descrip">Personal portfolio website for Gurshaan Gill, showcasing my work and skills.</h1>
-                    </div>
-                </div>
             </div>
             
         </>

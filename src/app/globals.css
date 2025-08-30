@@ -248,11 +248,6 @@ td, th {
   bottom: 0;
   overflow: hidden;
 }
-.popUp{
-  background-color: var(--fg);
-  width: 80em;
-  height: 38em;
-}
 
 .contact {
   width: 100vw;
@@ -301,22 +296,7 @@ td, th {
   z-index: 1;
   animation: none !important;
 }
-.btn {
-  color: var(--bg);
-  font-family: "Sansation", sans-serif;
-  padding: 1em 1em;
-  font-size: 1.2em;
-}
-.ggill {
-  padding: 5em 3em;
-  overflow: hidden;
-  color: var(--bg);
-}
 
-.descrip {
-  font-size: 1.3em;
-  color:#606060;
-}
 
 .image-slider {
   position: relative;
