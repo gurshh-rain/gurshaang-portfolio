@@ -32,13 +32,13 @@ const Contact = () => {
                         <Link href="https://www.artstation.com/gurshh">artstation</Link>
                     </div>
                     <div className="socials">
-                        <Link href="https://www.artstation.com/gurshh">instagram</Link>
+                        <Link href="https://www.instagram.com/gurshhhh_">instagram</Link>
                     </div>
                     <div className="socials">
                         <Link href="https://www.artstation.com/gurshh">twitter</Link>
                     </div>
                     <div className="socials">
-                        <Link href="https://www.artstation.com/gurshh">github</Link>
+                        <Link href="https://github.com/gurshh-rain?tab=repositories">github</Link>
                     </div>
                 </div>
             </footer>
