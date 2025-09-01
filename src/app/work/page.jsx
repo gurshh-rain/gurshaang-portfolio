@@ -36,13 +36,23 @@ const Work = () => {
                     </tr>
                     <tr className="tg">
                         <td>N°004</td>
-                        <td>TRADER.AI</td>
+                        <td>QUANTA.AI</td>
                         <td>2025</td>
                     </tr>
                     <tr className="tg">
                         <td>N°005</td>
                         <td>VECTOR</td>
                         <td>2025</td>
+                    </tr>
+                    <tr className="tg">
+                        <td>N°006</td>
+                        <td>BLANKWEAR</td>
+                        <td>2024</td>
+                    </tr>
+                    <tr className="tg">
+                        <td>N°007</td>
+                        <td>CORELY.AI</td>
+                        <td>2024</td>
                     </tr>
                     
                     </table>

@@ -214,7 +214,7 @@ td, th {
 tr {
   position: relative;
   overflow: hidden;
-  transition: color 0.5s ease;
+  transition: color 0.3s ease;
   background-color: var(--bg);
   color: var(--fg);
 }
@@ -230,7 +230,7 @@ tr::before {
   right: 0;
   top: 50%;
   height: 0;
-  background-color: var(--fg);
+  background-color: rgb(255, 72, 0);
   z-index: 0;  
   transition: top 0.5s ease, height 0.5s ease;
 }
