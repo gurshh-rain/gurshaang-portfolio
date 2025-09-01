@@ -39,6 +39,11 @@ const Work = () => {
                         <td>TRADER.AI</td>
                         <td>2025</td>
                     </tr>
+                    <tr className="tg">
+                        <td>N°005</td>
+                        <td>VECTOR</td>
+                        <td>2025</td>
+                    </tr>
                     
                     </table>
                 </div>
