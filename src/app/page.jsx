@@ -7,13 +7,21 @@ export default function Home() {
   useRevealer();
 
   useEffect(() => {
-    const header = document.querySelector(".header h1");
-    if (header) {
-      setTimeout(() => {
-        header.classList.add("visible");
-      }, 1450); // delay for smoothness
-    }
-  }, []);
+  const letters = document.querySelectorAll(".header .letter");
+  const img = document.querySelector(".hero-img");
+
+  if (letters.length && img) {
+    setTimeout(() => {
+      letters.forEach((letter, i) => {
+        setTimeout(() => {
+          letter.classList.add("visible");
+        }, i * 50); 
+      });
+      img.classList.add("visible");
+    }, 1500);
+  }
+}, []);
+
 
   return (
     <>
@@ -22,7 +30,11 @@ export default function Home() {
       <div id="container3D"></div>
       <div className="home">
         <div className="header">
-          <h1>gurshaan.</h1>
+          <h1>
+            {"gurshaan.".split("").map((char, i) => (
+              <span key={i} className="letter">{char}</span>
+            ))}
+          </h1>
         </div>
 
         <div className="hero-img">

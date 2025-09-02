@@ -52,7 +52,12 @@ const Nav = () => {
                     </div>
                 </div>
                 <div className="nav-copy">
-                    <Link href="https://www.artstation.com/gurshh">artstation</Link>
+                    <div className="nav-item">
+                        <Link href="https://www.artstation.com/gurshh">artstation</Link>
+                    </div>
+                    <div className="nav-item">
+                        <Link href="https://www.instagram.com/gurshhhh_">instagram</Link>
+                    </div>
                 </div>
                 <div className="nav-copy">
                     <p>toronto, on</p>

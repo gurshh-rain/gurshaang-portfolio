@@ -1,6 +1,7 @@
 "use client";
 import { useRevealer } from "../hooks/useRevealer";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const Contact = () => {
     useRevealer();

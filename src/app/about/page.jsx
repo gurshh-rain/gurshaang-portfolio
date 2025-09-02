@@ -3,6 +3,7 @@ import { useRevealer } from "../hooks/useRevealer";
 
 const Studio = () => {
     useRevealer();
+    
     return (
         <>
             <div className="revealer"></div>
