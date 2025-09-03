@@ -36,7 +36,7 @@ const Nav = () => {
         <div className="nav">
             <div className="col">
                 <div className="nav-logo">
-                    <Link href="/">gurshaan gill</Link>
+                    <Link href="/">gurshaan gill/gurshh</Link>
                 </div>
             </div>
             <div className="col">

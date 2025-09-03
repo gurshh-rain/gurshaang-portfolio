@@ -124,6 +124,15 @@ const Work = () => {
                         <td>CORELY.AI</td>
                         <td>2024</td>
                         </tr>
+
+                        <tr 
+                        className="tg" 
+                        onClick={() => window.location.href="/blankwear"}
+                        >
+                        <td>N°008</td>
+                        <td>.FONTX</td>
+                        <td>2025</td>
+                        </tr>
                     </tbody>
                     </table>
                 </div>

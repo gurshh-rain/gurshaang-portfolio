@@ -12,7 +12,7 @@ const Render = () => {
     const slideTitle = document.querySelector(".slide-title");
     const thumbnailWheel = document.querySelector(".thumbnail-wheel");
 
-    const totalSlides = 7;
+    const totalSlides = 10;
     const endScale = 5;
     let slideWidth = window.innerWidth * 0.45;
     let viewportCenter = window.innerWidth / 2;
@@ -25,7 +25,10 @@ const Render = () => {
         "Data Silhouette",
         "2077",
         "Destiny",
-        "Scarlet Life",
+        "Scarlet Culture",
+        "Light and Life",
+        "The Pillars",
+        "Imagining",
     ];
 
     let currentX = 0;
