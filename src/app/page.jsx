@@ -38,7 +38,7 @@ export default function Home() {
         </div>
 
         <div className="hero-img">
-          <img src="/hero2.jpg" alt="hero-img" />
+          <img src="/hero.jpg" alt="hero-img" />
         </div>
       </div>
     </>

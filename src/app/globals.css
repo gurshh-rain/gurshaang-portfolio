@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 .sansation-regular {
   font-family: "Sansation", sans-serif;
@@ -5,11 +6,6 @@
   font-style: normal;
 }
 
-.corinthia-bold {
-  font-family: "Corinthia", cursive;
-  font-weight: 700;
-  font-style: normal;
-}
 
 :root {
   --bg: #fff;
@@ -28,6 +24,32 @@ body {
   color: var(--fg);
 }
 
+.loader-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.loader-screen.fade-out {
+  opacity: 0;
+}
+
+.loader p {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: monospace;
+  letter-spacing: 2px;
+}
 #container3D {
   z-index: 1;
   width: 100vw !important;
@@ -68,7 +90,9 @@ a,p {
   display: flex;
   gap: 1em;
   z-index: 2;
+
 }
+
 
 .nav-item:hover {
   text-decoration-line: underline;
@@ -107,6 +131,8 @@ a,p {
   font-size:  20.5vw;
   text-align: center;
 }
+
+
 .letter {
   font-style: oblique;
   font-family: "Sansation", sans-serif;
@@ -122,17 +148,17 @@ a,p {
 }
 
 
-
 .home .hero-img {
   position: absolute;
   left: 2%;
   bottom: 0%;
-  width: 95%;
+  width: 96%;
   height: 45vh;
   overflow: hidden;
 }
 
 .hero-img {
+  filter: grayscale();
   opacity: 0;
   transform: translateY(40px); 
   transition: opacity 0.7s cubic-bezier(0.9, 0, 0.1, 1), transform 0.7s ease;
@@ -177,6 +203,7 @@ span {
   background-color: var(--bg);
 }
 .contact {
+  overflow: hidden;
   opacity: 0;
   transform: translateY(40px); 
   transition: opacity 0.7s cubic-bezier(0.9, 0, 0.1, 1), transform 0.7s ease;
@@ -190,6 +217,7 @@ span {
   opacity: 0;
   transform: translateY(40px); 
   transition: opacity 0.7s cubic-bezier(0.9, 0, 0.1, 1), transform 0.7s ease;
+  overflow: hidden;
 }
 
 .ani.visible {
@@ -201,7 +229,18 @@ span {
 .contact .col:nth-child(1) {
   flex: 1;
 }
+.about-title{
+  font-size: 5em;
+  margin-left: 1.2em;
+}
 
+.about-img {
+  position: absolute;
+  padding: 1em 1em;
+  top: 80%;
+  bottom: 0;
+  width: 100%;
+}
 .studio .col:nth-child(2), .contact .col:nth-child(2) {
   flex: 2;
   display: flex;
@@ -214,6 +253,15 @@ span {
   bottom: 0;
   right: 0;
 }
+.contact-copy h2 {
+  font-size: 1.6em;
+}
+.contact-img {
+  padding: 1em 1em;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
 .center {
   width: 100%;
   align-items: center;
@@ -225,10 +273,11 @@ span {
   text-decoration: underline;
   padding: 0.6em;
 }
+
 .skills {
   position: relative;
-  top: -11em;
-  padding: 4em 1em;
+  top: -10em;
+  padding: 3em 1em;
 }
 
 
@@ -325,6 +374,46 @@ tr:hover::before {
   animation: skillscroll 20s linear infinite;
 }
 
+.hover-wave {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  height: 1.3em;          /* more breathing room */
+  line-height: 1.3em;     /* match height */
+  vertical-align: middle;
+}
+
+.hover-wave-inner {
+  display: flex;
+  flex-direction: column;
+  height: 200%;           /* 2 stacked lines */
+  transform: translateY(0%);
+  transition: transform 0.4s cubic-bezier(0.9, 0, 0.1, 1);
+}
+
+.hover-wave-line {
+  display: flex;
+  height: 50%;            /* each line = half of inner */
+}
+
+.hover-wave-char {
+  font-family: "Sansation", sans-serif;
+  font-style: normal;
+  display: inline-block;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.9, 0, 0.1, 1);
+}
+
+/* scroll one line up */
+.hover-wave:hover .hover-wave-inner {
+  transform: translateY(-5%);
+}
+
+.hover-wave:hover .hover-wave-char {
+  transform: translateY(-100%);
+}
+
+
 @keyframes skillscroll {
  0% {
     margin-left: 0px;
@@ -352,6 +441,7 @@ tr:hover::before {
   width: 100vw;
   height: 100%;
   min-height: 100svh;
+  overflow: hidden;
 }
 
 .letter, .word, .line {
@@ -409,57 +499,62 @@ tr:hover::before {
   padding: 0.7em 0em;
   font-size: 1.3em;
 }
-
-.slide-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.slider {
-  position: fixed;
-  width: 100vw;
-  height: 100svh;
-  overflow: hidden;
-}
-
-.slide {
+.title3D{
   position: absolute;
-  width: 45vw;
-  height: 100svh;
-  overflow: hidden;
+  top: 17%;
+  padding: 0em 1em;
 }
 
-.slide-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  color: var(--bg);
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  font-weight: 500;
-  line-height: 1;
-  background-color: var(--fg);
-  padding: 0.2rem 0.4rem;
-  pointer-events: none;
-  z-index: 2;
+.title3D h2 {
+  font-size: 1em;
 }
 
-.thumbnail-item {
-  position: absolute;
-  width: 35px;
-  height: 50px;
-  overflow: hidden;
+.title3D h1 {
+  font-size: 5em;
 }
 
-@media (max-width: 1000px) {
-  .slide {
-    width: 75vw;
-  }
-  .thumbnail-item {
-    width: 20px;
-    height: 30px;
-  }
+img {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    display: inline-block;
+}
+.gallery {
+    position: relative;
+    top: 32vh;
+    display: grid;
+    margin: 1em;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 200px;
+    grid-auto-flow: dense;
+}
+.gallery > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gallery > div > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.gallery .tall {
+    grid-row: span 2;
+}
+
+.tooltip {
+    font-family: "Sansation", sans-serif;
+    position: fixed;
+    background: black;
+    color: white;
+    padding: 4px 8px;
+    font-size: 0.8em;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 9999;
+    transform: translate(-15%, -150%);
+
 }

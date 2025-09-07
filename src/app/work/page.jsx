@@ -4,6 +4,8 @@ import { useRevealer } from "../hooks/useRevealer";
 import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import HoverScrollText from "../components/HoverScrollText";
+
 
 const Work = () => {
     useRevealer();
@@ -67,7 +69,7 @@ const Work = () => {
                         onClick={handleNavigation("/GGILL-025")}
                         >
                         <td>N°001</td>
-                        <td>GURSHAAN GILL PORTFOLIO</td>
+                        <td><HoverScrollText>GURSHAAN GILL PORTFOLIO</HoverScrollText></td>
                         <td>2025</td>
                         </tr>
 
@@ -76,7 +78,7 @@ const Work = () => {
                         onClick={handleNavigation("/3D-Rendering")}
                         >
                         <td>N°002</td>
-                        <td>3D RENDERING</td>
+                        <td><HoverScrollText>3D RENDERING</HoverScrollText></td>
                         <td>2015-CURRENT</td>
                         </tr>
 
@@ -85,7 +87,7 @@ const Work = () => {
                         onClick={() => window.location.href="/face-recognition"}
                         >
                         <td>N°003</td>
-                        <td>FACE RECONGNITION</td>
+                        <td><HoverScrollText>FACE RECONGINITION</HoverScrollText></td>
                         <td>2024</td>
                         </tr>
 
@@ -94,7 +96,7 @@ const Work = () => {
                         onClick={() => window.location.href="/quanta-ai"}
                         >
                         <td>N°004</td>
-                        <td>QUANTA.AI</td>
+                        <td><HoverScrollText>QUANTA.AI</HoverScrollText></td>
                         <td>2025</td>
                         </tr>
 
@@ -103,7 +105,7 @@ const Work = () => {
                         onClick={() => window.location.href="/vector"}
                         >
                         <td>N°005</td>
-                        <td>VECTOR</td>
+                        <td><HoverScrollText>VERTEX</HoverScrollText></td>
                         <td>2025</td>
                         </tr>
 
@@ -112,7 +114,7 @@ const Work = () => {
                         onClick={() => window.location.href="/blankwear"}
                         >
                         <td>N°006</td>
-                        <td>BLANKWEAR</td>
+                        <td><HoverScrollText>BLANKWEAR</HoverScrollText></td>
                         <td>2024</td>
                         </tr>
 
@@ -121,7 +123,7 @@ const Work = () => {
                         onClick={() => window.location.href="/corely-ai"}
                         >
                         <td>N°007</td>
-                        <td>CORELY.AI</td>
+                        <td><HoverScrollText>CORELY.AI</HoverScrollText></td>
                         <td>2024</td>
                         </tr>
 
@@ -130,7 +132,7 @@ const Work = () => {
                         onClick={() => window.location.href="/blankwear"}
                         >
                         <td>N°008</td>
-                        <td>.FONTX</td>
+                        <td><HoverScrollText>.FONTX</HoverScrollText></td>
                         <td>2025</td>
                         </tr>
                     </tbody>

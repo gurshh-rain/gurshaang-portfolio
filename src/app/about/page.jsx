@@ -20,15 +20,16 @@ const Studio = () => {
             <div className="ani">
                 <div className="studio">
                     <div className="col">
-                        <h2>My Story</h2>
+                        <h2 className="about-title">@MY STORY</h2>
                     </div>
                     <div className="col">
-                        <h2>Hey there! I'm Gurshaan Gill. Living in Toronto, where I spend my time turning <span>ideas</span> into an <span>impactful</span> experience and reality. 
+                        <h2 className="brief">Hey there! I'm Gurshaan Gill. Living in Toronto, where I spend my time turning <span>ideas</span> into an <span>impactful</span> experience and reality. 
                             Basically, I like technology. For the past couple years, I've been exploring various <span>programming langauges, data structures, web development,
                             3d rendering, AI, etc...</span> Currently, my focus is to explore the big ideas in conneting <span>technology</span> and <span>medience</span>.
                         </h2>
                     </div>
                 </div>
+                <img src="hero3.jpg" className="about-img"/>
                 <div className="skillpage">
                     <div className="skills">
                         <h2>Skills</h2>
@@ -61,7 +62,9 @@ const Studio = () => {
                         <div className="skill-item"><h2>React</h2></div>
 
                     </div>
+
                 </div>
+                
             </div>
         </>
     )

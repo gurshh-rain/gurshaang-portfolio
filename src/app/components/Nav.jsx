@@ -2,13 +2,13 @@
 import Link from "next/link"
 import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
-
+import HoverScrollText from "./HoverScrollText";
 
 const Nav = () => {
     const router = useTransitionRouter();
     const pathname = usePathname();
 
-    function triggerPageTransition(){
+    function triggerPageTransition() {
         document.documentElement.animate([
             {
                 clipPath: "polygon(25% 75%, 75% 75%, 75% 75%, 25% 75%)"
@@ -22,8 +22,9 @@ const Nav = () => {
             pseudoElement: "::view-transition-new(root)",
         });
     }
+
     const handleNavigation = (path) => (e) => {
-        if(path === pathname){
+        if (path === pathname) {
             e.preventDefault();
             return;
         }
@@ -32,31 +33,44 @@ const Nav = () => {
             onTransitionReady: triggerPageTransition,
         });
     };
+
     return (
         <div className="nav">
             <div className="col">
                 <div className="nav-logo">
-                    <Link href="/">gurshaan gill/gurshh</Link>
+                    <Link href="/">
+                        <HoverScrollText>gurshaan gill/gurshh</HoverScrollText>
+                    </Link>
                 </div>
             </div>
             <div className="col">
                 <div className="nav-items">
                     <div className="nav-item">
-                        <Link href="/work" onClick={handleNavigation("/work")}>projects</Link>
+                        <Link href="/work" onClick={handleNavigation("/work")}>
+                            <HoverScrollText>projects</HoverScrollText>
+                        </Link>
                     </div>
                     <div className="nav-item">
-                        <Link href="/about" onClick={handleNavigation("/about")}>about</Link>
+                        <Link href="/about" onClick={handleNavigation("/about")}>
+                            <HoverScrollText>about</HoverScrollText>
+                        </Link>
                     </div>
                     <div className="nav-item">
-                        <Link href="/contact" onClick={handleNavigation("/contact")}>contact</Link>
+                        <Link href="/contact" onClick={handleNavigation("/contact")}>
+                            <HoverScrollText>contact</HoverScrollText>
+                        </Link>
                     </div>
                 </div>
                 <div className="nav-copy">
                     <div className="nav-item">
-                        <Link href="https://www.artstation.com/gurshh">artstation</Link>
+                        <Link href="https://www.artstation.com/gurshh">
+                            <HoverScrollText>artstation</HoverScrollText>
+                        </Link>
                     </div>
                     <div className="nav-item">
-                        <Link href="https://www.instagram.com/gurshhhh_">instagram</Link>
+                        <Link href="https://www.instagram.com/gurshhhh_">
+                            <HoverScrollText>instagram</HoverScrollText>
+                        </Link>
                     </div>
                 </div>
                 <div className="nav-copy">
@@ -64,7 +78,6 @@ const Nav = () => {
                 </div>
             </div>
         </div>
-    
     )
 }
 

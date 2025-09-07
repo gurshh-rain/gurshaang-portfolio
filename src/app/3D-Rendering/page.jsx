@@ -1,270 +1,91 @@
 "use client";
-import Link from "next/link"
+import { useState } from "react";
 import { useRevealer } from "../hooks/useRevealer";
-import { useEffect } from "react";
-import gsap from "gsap";
+
+const images = [
+  { src: "slide-1.jpg", title: "SHATTERED", className: "" },
+  { src: "slide-2.jpg", title: "HEY", className: "" },
+  { src: "slide-3.jpg", title: "NEON DREAMS", className: "tall" },
+  { src: "slide-4.jpg", title: "DATASTREAM", className: "tall" },
+  { src: "slide-5.jpg", title: "MIDNIGHT RUSH", className: "" },
+  { src: "slide-6.jpg", title: "PRISM", className: "tall" },
+  { src: "slide-7.jpg", title: "SHINKAI", className: "" },
+  { src: "slide-8.jpg", title: "MATRIX", className: "tall" },
+  { src: "slide-9.jpg", title: "CHAINED", className: "" },
+  { src: "hero.jpg", title: "CHAIN", className: "" },
+  { src: "slide-10.jpg", title: "SPECTRA", className: "tall" },
+  { src: "slide-11.jpg", title: "404 ERROR", className: "" },
+  { src: "slide-12.jpg", title: "GTR QUADRANT", className: "tall" },
+  { src: "slide-13.jpg", title: "ABYSS", className: "" },
+  
+  { src: "slide-1.jpg", title: "SHATTERED", className: "" },
+  { src: "slide-2.jpg", title: "HEY", className: "" },
+  { src: "slide-3.jpg", title: "NEON DREAMS", className: "tall" },
+  { src: "slide-4.jpg", title: "DATASTREAM", className: "tall" },
+  { src: "slide-5.jpg", title: "MIDNIGHT RUSH", className: "" },
+  { src: "slide-6.jpg", title: "PRISM", className: "tall" },
+  { src: "slide-7.jpg", title: "SHINKAI", className: "" },
+  { src: "slide-8.jpg", title: "MATRIX", className: "tall" },
+  { src: "slide-9.jpg", title: "CHAINED", className: "" },
+  { src: "hero.jpg", title: "CHAIN", className: "" },
+  { src: "slide-10.jpg", title: "SPECTRA", className: "tall" },
+  { src: "slide-11.jpg", title: "404 ERROR", className: "" },
+  { src: "slide-12.jpg", title: "GTR QUADRANT", className: "tall" },
+  { src: "slide-13.jpg", title: "ABYSS", className: "" },
+];
 
 const Render = () => {
-    useRevealer();
+  useRevealer();
 
-    useEffect(() => {
-    const slider = document.querySelector(".slider");
-    const slideTitle = document.querySelector(".slide-title");
-    const thumbnailWheel = document.querySelector(".thumbnail-wheel");
+  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, text: "" });
 
-    const totalSlides = 10;
-    const endScale = 5;
-    let slideWidth = window.innerWidth * 0.45;
-    let viewportCenter = window.innerWidth / 2;
-    let isMobile = window.innerWidth < 1000;
+  const handleMouseMove = (e) => {
+    setTooltip((prev) => ({
+      ...prev,
+      x: e.clientX + 15,
+      y: e.clientY + 15,
+    }));
+  };
 
-    const slideTitles = [
-        "Blurred Vision",
-        "Hey",
-        "Crypto",
-        "Data Silhouette",
-        "2077",
-        "Destiny",
-        "Scarlet Culture",
-        "Light and Life",
-        "The Pillars",
-        "Imagining",
-    ];
+  return (
+    <>
+      <div className="revealer"></div>
+      <div className="title3D">
+        <h1>3D RENDERS</h1>
+        <h2>Here are some of my highlighted 3D projects.</h2>
+      </div>
 
-    let currentX = 0;
-    let targetX = 0;
-    let isScrolling = false;
-    let scrollTimeout;
-    let activeSlideIndex = 0;
-
-    function createSlides() {
-        for(let i = 0; i < totalSlides * 3; i++){
-            const slide = document.createElement("div");
-            slide.className = "slide";
-
-            const img = document.createElement("img");
-            const imageNumber = (i % totalSlides) + 1;
-            img.src = `/slide-${imageNumber}.jpg`;
-
-            slide.appendChild(img);
-            slider.appendChild(slide);
-        }
-    }
-
-    function initializeSlider() {
-        const slides = document.querySelectorAll(".slide");
-
-        slides.forEach((slide,index) => {
-            const x = index * slideWidth - slideWidth;
-            gsap.set(slide, { x: x});
-        });
-
-        const centerOffset= window.innerWidth / 2 - slideWidth / 2
-        currentX = centerOffset;
-        targetX = centerOffset;
-    }
-
-    createSlides();
-    initializeSlider();
-
-    function handleScroll(e) {
-        const scrollIntensity = e.deltaY || e.detail || e.wheelDelta * -1;
-        targetX -= scrollIntensity * 1;
-
-        isScrolling = true;
-        clearTimeout(scrollTimeout);
-
-        scrollTimeout = setTimeout(() => {
-            isScrolling = false;
-        }, 150);
-    }
-
-    function animate() {
-        currentX += (targetX - currentX) * 0.1;
-
-        const totalWidth = totalSlides * slideWidth;
-
-        if(currentX > 0) {
-            currentX -= totalWidth;
-            targetX -= totalWidth;
-        } else if (currentX < -totalWidth) {
-            currentX += totalWidth;
-            targetX += totalWidth;
-        }
-    }
-
-    const slides = document.querySelectorAll(".slide");
-    slides.forEach((slide, index) => {
-        const x = index * slideWidth + currentX;
-        gsap.set(slide, { x: x});
-    });
-
-    requestAnimationFrame(animate);
-
-    window.addEventListener("wheel", handleScroll, { passive: false});
-    window.addEventListener("DOMMouseScroll", handleScroll, {passive: false});
-
-    window.addEventListener(
-        "scroll",
-        function (e) {
-            if(e.target === document || e.target === document.body) {
-                window.scrollTo(0, 0);
+      <div className="gallery">
+        {images.map((img, i) => (
+          <div
+            key={i}
+            className={`image-container ${img.className}`}
+            onMouseEnter={() =>
+              setTooltip({ visible: true, x: 0, y: 0, text: img.title })
             }
-        },
-        {passive: false}
-    );
-
-    animate();
-
-    function animate() {
-        currentX += (targetX - currentX) * 0.1;
-
-        const totalWidth = totalSlides * slideWidth;
-        if(currentX > 0){
-            currentX -= totalWidth;
-            targetX -= totalWidth;
-        } else if (currentX < -totalWidth) {
-            currentX += totalWidth;
-            targetX += totalWidth;
-        }
-
-        const slides = document.querySelectorAll(".slide");
-
-        slides.forEach((slide, index) => {
-            const x = index * slideWidth + currentX;
-            gsap.set(slide, { x:x });
-
-            const slideCenterX = x + slideWidth / 2;
-            const distanceFromCenter = Math.abs(slideCenterX - viewportCenter);
-
-            const outerDistance = slideWidth / 2;
-            const progress = Math.min(distanceFromCenter / outerDistance, 1);
-
-            const easedProgress = 
-                progress < 0.5
-                    ? 2 * progress * progress
-                    : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-            
-            const scale = 1 + easedProgress * (endScale - 1);
-
-            const img = slide.querySelector("img");
-            gsap.set(img, { scale: scale});
-
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    function createThumbnailItems() {
-        for(let i = 0; i < totalSlides; i++){
-            const angle = (i / totalSlides) * Math.PI * 2;
-            const radius = isMobile ? 150 : 350;
-            const x = radius * Math.cos(angle) + window.innerWidth / 2;
-            const y = radius * Math.sin(angle) + window.innerHeight / 2 - 25;
-
-            const thumbnail = document.createElement("div");
-            thumbnail.className = "thumbnail-item";
-            thumbnail.dataset.index = i;
-            thumbnail.dataset.angle = angle;
-            thumbnail.dataset.radius = radius;
-
-            const img = document.createElement("img");
-            const imageNumber = i + 1;
-            img.src = `/slide-${imageNumber}.jpg`;
-            thumbnail.appendChild(img);
-
-            gsap.set(thumbnail, {
-                x,
-                y,
-                transformOrigin: "center center",
-            });
-
-            thumbnailWheel.appendChild(thumbnail);
-        }
-    }
-
-    createThumbnailItems();
-
-    function updateThumbnailItems(){
-        const exactSlideProgress = Math.abs(currentX) / slideWidth;
-        const currentRotationAngle = -(exactSlideProgress * (360/totalSlides)) + 90;
-
-        const thumbnails = document.querySelectorAll(".thumbnail-item");
-        thumbnails.forEach((thumbnail) => {
-            const baseAngle = parseFloat(thumbnail.dataset.angle);
-            const radius = isMobile ? 150 : 350;
-            const currentAngle = baseAngle + (currentRotationAngle * Math.PI) / 180;
-
-            const x = radius * Math.cos(currentAngle) + window.innerWidth / 2;
-            const y = radius * Math.sin(currentAngle) + window.innerHeight / 2- 25;
-
-            gsap.set(thumbnail, {
-                x: x,
-                y: y,
-                rotation: 0,
-                transformOrigin: "center center",
-            });
-        });
-    }
-
-
-    function animate() {
-        currentX += (targetX - currentX) * 0.1;
-        const totalWidth = totalSlides * slideWidth;
-        if(currentX > 0){
-            currentX -= totalWidth;
-            targetX -= totalWidth;
-        } else if (currentX < -totalWidth) {
-            currentX += totalWidth;
-            targetX += totalWidth;
-        }
-
-        let centerSlideIndex = 0;
-        let closestToCenter = Infinity;
-        const slides = document.querySelectorAll(".slide");
-
-        slides.forEach((slide, index) => {
-            const x = index * slideWidth + currentX;
-            gsap.set(slide, { x: x});
-
-            const slideCenterX = x + slideWidth / 2;
-            const distanceFromCenter = Math.abs(slideCenterX - viewportCenter);
-            
-            const outerDistance = slideWidth * 3;
-            const progress = Math.min(distanceFromCenter / outerDistance, 1);
-
-            const easedProgress = 
-                progress < 0.5 
-                    ? 2 * progress * progress
-                    : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-            
-            const scale = 1 + easedProgress * (endScale - 1);
-
-            const img = slide.querySelector("img");
-            gsap.set(img , {scale: scale});
-
-            if(distanceFromCenter < closestToCenter) {
-                closestToCenter = distanceFromCenter;
-                centerSlideIndex = index % totalSlides;
+            onMouseLeave={() =>
+              setTooltip({ visible: false, x: 0, y: 0, text: "" })
             }
-        });
+            onMouseMove={handleMouseMove}
+          >
+            <img src={img.src} alt={img.title} />
+          </div>
+        ))}
+      </div>
 
-        const currentTitleIndex = centerSlideIndex;
-        slideTitle.textContent = slideTitles[currentTitleIndex];
-
-        updateThumbnailItems();
-        requestAnimationFrame(animate);
-    }
-    });
-    return (
-        <>
-            <div className="revealer"></div>
-            <div className="slider">
-                <p className="slide-title">Blurred Vision</p>
-            </div>
-            <div className="thumbnail-wheel"></div>
-        </>
-    )
-}
+      {tooltip.visible && (
+        <div
+          className="tooltip"
+          style={{
+            top: tooltip.y,
+            left: tooltip.x,
+          }}
+        >
+          {tooltip.text}
+        </div>
+      )}
+    </>
+  );
+};
 
 export default Render;

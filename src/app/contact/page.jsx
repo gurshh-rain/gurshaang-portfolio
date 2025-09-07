@@ -2,6 +2,7 @@
 import { useRevealer } from "../hooks/useRevealer";
 import Link from "next/link";
 import { useEffect } from "react";
+import HoverScrollText from "../components/HoverScrollText";
 
 const Contact = () => {
     useRevealer();
@@ -38,23 +39,31 @@ const Contact = () => {
                     </div>
                 </div>
                 <div className="contact-img">
-                    <img src="hero.jpg" alt="contact-img"/>
+                    <img src="hero3.jpg" alt="contact-img"/>
                 </div>
             </div>
             
             <footer className="contact-bottom">
                 <div className="center">
                     <div className="socials">
-                        <Link href="https://www.artstation.com/gurshh">artstation</Link>
+                        <Link href="https://www.artstation.com/gurshh">
+                            <HoverScrollText>artstation</HoverScrollText>
+                        </Link>
                     </div>
                     <div className="socials">
-                        <Link href="https://www.instagram.com/gurshhhh_">instagram</Link>
+                        <Link href="https://www.instagram.com/gurshhhh_">
+                            <HoverScrollText>instagram</HoverScrollText>
+                        </Link>
                     </div>
                     <div className="socials">
-                        <Link href="https://www.artstation.com/gurshh">twitter</Link>
+                        <Link href="https://www.artstation.com/gurshh">
+                            <HoverScrollText>twitter</HoverScrollText>
+                        </Link>
                     </div>
                     <div className="socials">
-                        <Link href="https://github.com/gurshh-rain?tab=repositories">github</Link>
+                        <Link href="https://github.com/gurshh-rain?tab=repositories">
+                            <HoverScrollText>artstation</HoverScrollText>
+                        </Link>
                     </div>
                 </div>
             </footer>
