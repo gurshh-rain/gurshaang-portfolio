@@ -8,12 +8,13 @@ gsap.registerPlugin(CustomEase);
 CustomEase.create("hop", "0.9, 0, 0.1, 1");
 
 export function useRevealer() {
-    useGSAP(() => {
-        gsap.to(".revealer", {
-            scaleY: 0,
-            duration: 1.25,
-            delay: 1,
-            ease: "hop",
-        });
-    }, {});
+  useGSAP(() => {
+    // Animate the .revealer div
+    gsap.to(".revealer", {
+      scaleY: 0,
+      duration: 1.25,
+      delay: 1, // leave delay to avoid conflicts
+      ease: "hop",
+    });
+  }, {});
 }

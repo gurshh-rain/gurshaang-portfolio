@@ -13,11 +13,12 @@ const Work = () => {
     useEffect(() => {
         const work = document.querySelector(".work h1");
         const table = document.querySelector(".project-display");
+
         if (work && table) {
           setTimeout(() => {
             work.classList.add("visible");
             table.classList.add("visible");
-          }, 1450); // delay for smoothness
+          }, 1350); 
         }
       }, []);
 
@@ -53,6 +54,9 @@ const Work = () => {
             <div className="revealer"></div>
             <div className="work">
                 <h1>selected work.</h1>
+                <div className="img-container">
+                    <img src="hero4.jpg"/>
+                </div>
                 <hr></hr>
                 <div className="projects">
                 <table className="project-display">
