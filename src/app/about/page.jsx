@@ -25,7 +25,7 @@ const Studio = () => {
                     <div className="col">
                         <h2 className="brief">Hey there! I'm Gurshaan Gill. Living in Toronto, where I spend my time turning <span>ideas</span> into an <span>impactful</span> experience and reality. 
                             Basically, I like technology. For the past couple years, I've been exploring various <span>programming langauges, data structures, web development,
-                            3d rendering, AI, etc...</span> Currently, my focus is to explore the big ideas in conneting <span>technology</span> and <span>medience</span>.
+                            3d rendering, AI, etc...</span> Currently, my focus is to explore the big ideas in connecting <span>mechatronics</span>.
                         </h2>
                     </div>
                 </div>

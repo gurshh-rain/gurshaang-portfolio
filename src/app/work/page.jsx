@@ -97,10 +97,10 @@ const Work = () => {
 
                         <tr 
                         className="tg" 
-                        onClick={() => window.location.href="/quanta-ai"}
+                        onClick={() => window.location.href="https://dylanngo.vercel.app"}
                         >
                         <td>N°004</td>
-                        <td><HoverScrollText>QUANTA.AI</HoverScrollText></td>
+                        <td><HoverScrollText>DYLAN NGO PORTFOLIO</HoverScrollText></td>
                         <td>2025</td>
                         </tr>
 
@@ -115,7 +115,7 @@ const Work = () => {
 
                         <tr 
                         className="tg" 
-                        onClick={() => window.location.href="/blankwear"}
+                        onClick={() => window.location.href="https://www.blankwear.clothing"}
                         >
                         <td>N°006</td>
                         <td><HoverScrollText>BLANKWEAR</HoverScrollText></td>

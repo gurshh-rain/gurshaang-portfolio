@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Revealer with progress counter and stretching bar */}
+      {}
       <div className="revealer">
         <div className="loading-content">
           <h1>{progress}%</h1>
@@ -58,7 +58,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Main content */}
+      {}
       <div id="container3D"></div>
       <div className="home">
         <div className="header">
