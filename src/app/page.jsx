@@ -17,8 +17,13 @@ export default function Home() {
       if (counter >= 100) {
         clearInterval(interval);
 
-        // Push up the revealer
-        gsap.to(".revealer", {
+       gsap.to("#loader-path", {
+          attr: { d: "M0,0 H100 V100 Q50,60 0,100 Z" }, // middle bends inward
+          duration: 1.25,
+          ease: "power3.inOut",
+        });
+
+        gsap.to("#loader-svg", {
           y: "-100%",
           duration: 1.25,
           ease: "power3.inOut",
@@ -41,22 +46,43 @@ export default function Home() {
           }, i * 50);
         });
         img.classList.add("visible");
-      }, 2700);
+      }, 2650);
     }
   }, []);
 
   return (
     <>
       {}
-      <div className="revealer">
-        <div className="loading-content">
-          <h1>{progress}%</h1>
-          <div
-            className="loading-bar"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-      </div>
+      <svg 
+      id="loader-svg"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: 9999,
+      }}
+    >
+      <path
+        id="loader-path"
+        d="M0,0 H100 V100 Q50,100 0,100 Z"
+        fill="#000"
+      />
+      <text
+        x="50"
+  y="50"
+  textAnchor="middle"
+  dominantBaseline="middle"
+  fill="#fff"
+  fontSize="2.2"
+        
+      >
+        {progress}%
+      </text>
+    </svg>
 
       {}
       <div id="container3D"></div>
