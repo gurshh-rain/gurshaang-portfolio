@@ -1,5 +1,5 @@
 "use client";
-
+import Head from 'next/head';
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 
@@ -85,6 +85,10 @@ export default function Home() {
     </svg>
 
       {}
+      <Head>
+        <meta name="google-site-verification" content="PyXlGf13MpKqovovDIJSMvhtV8pDc7anshKjJNaWu10" />
+      </Head>
+
       <div id="container3D"></div>
       <div className="home">
         <div className="header">
