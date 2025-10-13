@@ -16,7 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Gurshaan Gill",
   description: "Portfolio created by Gurshaan Gill",
-};
+  verification: {
+    google: "PyXlGf13MpKqovovDIJSMvhtV8pDc7anshKjJNaWu10",
+},};
+
 
 export default function RootLayout({ children }) {
   return (
