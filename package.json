@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
-    "@react-three/drei": "^10.7.4",
-    "@react-three/fiber": "^9.3.0",
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.4.0",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "html2canvas": "^1.4.1",

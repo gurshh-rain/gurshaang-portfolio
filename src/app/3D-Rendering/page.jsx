@@ -3,35 +3,23 @@ import { useState } from "react";
 import { useRevealer } from "../hooks/useRevealer";
 
 const images = [
-  { src: "slide-1.jpg", title: "SHATTERED", className: "" },
   { src: "slide-2.jpg", title: "HEY", className: "" },
-  { src: "slide-3.jpg", title: "NEON DREAMS", className: "tall" },
-  { src: "slide-12.jpg", title: "DATASTREAM", className: "tall" },
+  { src: "Jtemple.png", title: "SHINKAI", className: "" },
+  { src: "Brutalism.png", title: "BRUTALISM", className: "tall" },
+  { src: "slide-14.png", title: "DATASTREAM", className: "tall" },
   { src: "slide-5.jpg", title: "MIDNIGHT RUSH", className: "" },
   { src: "slide-6.jpg", title: "PRISM", className: "tall" },
-  { src: "slide-7.jpg", title: "SHINKAI", className: "" },
+  { src: "Car-Garage.png", title: "AMG GT", className: "" },
   { src: "slide-8.jpg", title: "MATRIX", className: "tall" },
-  { src: "slide-9.jpg", title: "CHAINED", className: "" },
-  { src: "hero.jpg", title: "CHAIN", className: "" },
+  { src: "slide-9.png", title: "CHAINED", className: "" },
+  { src: "Underworld.png", title: "UNDERWORLD", className: "" },
   { src: "slide-10.jpg", title: "SPECTRA", className: "tall" },
-  { src: "slide-11.jpg", title: "404 ERROR", className: "" },
-  { src: "slide-12.jpg", title: "GTR QUADRANT", className: "tall" },
+  { src: "Cyber-Slums.png", title: "SLUMS", className: "tall" },
+  { src: "Divine.png", title: "DIVINE", className: "tall" },
   { src: "slide-13.jpg", title: "ABYSS", className: "" },
-  
-  { src: "slide-1.jpg", title: "SHATTERED", className: "" },
-  { src: "slide-2.jpg", title: "HEY", className: "" },
-  { src: "slide-3.jpg", title: "NEON DREAMS", className: "tall" },
-  { src: "slide-7.jpg", title: "DATASTREAM", className: "tall" },
-  { src: "slide-5.jpg", title: "MIDNIGHT RUSH", className: "" },
-  { src: "slide-6.jpg", title: "PRISM", className: "tall" },
-  { src: "slide-7.jpg", title: "SHINKAI", className: "" },
-  { src: "slide-8.jpg", title: "MATRIX", className: "tall" },
-  { src: "slide-9.jpg", title: "CHAINED", className: "" },
-  { src: "hero.jpg", title: "CHAIN", className: "" },
-  { src: "slide-10.jpg", title: "SPECTRA", className: "tall" },
-  { src: "slide-11.jpg", title: "404 ERROR", className: "" },
-  { src: "slide-12.jpg", title: "GTR QUADRANT", className: "tall" },
-  { src: "slide-13.jpg", title: "ABYSS", className: "" },
+  { src: "slide-4.png", title: "ABYSS", className: "" },
+
+
 ];
 
 const Render = () => {

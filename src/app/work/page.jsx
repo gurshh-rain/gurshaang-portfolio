@@ -91,8 +91,8 @@ const Work = () => {
                         onClick={() => window.location.href="/face-recognition"}
                         >
                         <td>N°003</td>
-                        <td><HoverScrollText>FACE RECONGINITION</HoverScrollText></td>
-                        <td>2024</td>
+                        <td><HoverScrollText>HAND TRACKER</HoverScrollText></td>
+                        <td>2025</td>
                         </tr>
 
                         <tr 
@@ -106,11 +106,11 @@ const Work = () => {
 
                         <tr 
                         className="tg" 
-                        onClick={() => window.location.href="/vector"}
+                        onClick={handleNavigation("/robot")}
                         >
                         <td>N°005</td>
-                        <td><HoverScrollText>VERTEX</HoverScrollText></td>
-                        <td>2025</td>
+                        <td><HoverScrollText>ROBOT DESIGN</HoverScrollText></td>
+                        <td>2024-CURRENT</td>
                         </tr>
 
                         <tr 
@@ -136,7 +136,7 @@ const Work = () => {
                         onClick={() => window.location.href="/blankwear"}
                         >
                         <td>N°008</td>
-                        <td><HoverScrollText>.FONTX</HoverScrollText></td>
+                        <td><HoverScrollText>TRADING SCRIPTS</HoverScrollText></td>
                         <td>2025</td>
                         </tr>
                     </tbody>
