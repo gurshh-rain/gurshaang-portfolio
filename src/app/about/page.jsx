@@ -1,73 +1,67 @@
 "use client";
 import { useRevealer } from "../hooks/useRevealer";
 import { useEffect } from "react";
+import styles from "./Studio.module.css";
 
 const Studio = () => {
     useRevealer();
     useEffect(() => {
-        const ani = document.querySelectorAll(".ani");
-        if (ani) {
-            for(let i = 0; i < ani.length; i++){
-                setTimeout(() => {
-                ani[i].classList.add("visible");
-                }, 1350); 
-            }
-        }
+        const ani = document.querySelectorAll(`.${styles.ani}`);
+        ani.forEach((el, i) => {
+            setTimeout(() => el.classList.add(styles.visible), 1350 + i * 80);
+        });
     }, []);
+
     return (
         <>
-            <div className="revealer"></div>
-            <div className="ani">
-                <div className="studio">
-                    <div className="col">
-                        <h2 className="about-title">@MY STORY</h2>
-                    </div>
-                    <div className="col">
-                        <h2 className="brief">Hey there! I'm Gurshaan Gill. Living in Toronto, where I spend my time turning <span>ideas</span> into an <span>impactful</span> experience and reality. 
-                            Basically, I like technology. For the past couple years, I've been exploring various <span>programming langauges, data structures, web development,
-                            3d rendering, AI, etc...</span> Currently, my focus is to explore the big ideas in connecting <span>mechatronics</span>.
+            <div className="revealer"></div> 
+            <div className={styles.ani}>
+                <div className={styles.studio}>
+                    <div className={styles.headerRow}>
+                        <p className={styles.aboutTag}>@My Story</p>
+                        <h2 className={styles.brief}>
+                            Hey there. I'm Gurshaan Gill — living in Toronto,
+                            turning <span>ideas</span> into{" "}
+                            <span>impactful</span> experiences. Programming
+                            languages, data structures, web dev, 3D rendering,
+                            AI, and beyond. Currently exploring the big ideas in{" "}
+                            <span>mechatronics</span>.
                         </h2>
                     </div>
-                </div>
-                <img src="hero3.jpg" className="about-img"/>
-                <div className="skillpage">
-                    <div className="skills">
-                        <h2>Skills</h2>
-                    </div>
-                    <div className="table">
-                        <div className="first-skill"><h2>Web Development</h2></div>
-                        <div className="skill-item"><h2>UI/UX Design</h2></div>
-                        <div className="skill-item"><h2>NEXTJS</h2></div>
-                        <div className="skill-item"><h2>OpenCV</h2></div>
-                        <div className="skill-item"><h2>Java</h2></div>
-                        <div className="skill-item"><h2>C++</h2></div>
-                        <div className="skill-item"><h2>Blender</h2></div>
-                        <div className="skill-item"><h2>3D Modeling</h2></div>
-                        <div className="skill-item"><h2>3D Animation</h2></div>
-                        <div className="skill-item"><h2>Product Design</h2></div>
-                        <div className="skill-item"><h2>3D Visualization</h2></div>
-                        <div className="skill-item"><h2>React</h2></div>
 
-                        <div className="skill-item"><h2>Web Development</h2></div>
-                        <div className="skill-item"><h2>UI/UX Design</h2></div>
-                        <div className="skill-item"><h2>NEXTJS</h2></div>
-                        <div className="skill-item"><h2>OpenCV</h2></div>
-                        <div className="skill-item"><h2>Java</h2></div>
-                        <div className="skill-item"><h2>C++</h2></div>
-                        <div className="skill-item"><h2>Blender</h2></div>
-                        <div className="skill-item"><h2>3D Modeling</h2></div>
-                        <div className="skill-item"><h2>3D Animation</h2></div>
-                        <div className="skill-item"><h2>Product Design</h2></div>
-                        <div className="skill-item"><h2>3D Visualization</h2></div>
-                        <div className="skill-item"><h2>React</h2></div>
-
+                    <div className={styles.aboutImgWrap}>
+                        <img
+                            src="hero3.jpg"
+                            className={styles.aboutImg}
+                            alt="Gurshaan Gill"
+                        />
+                        <span className={styles.imgLabel}>Toronto, CA</span>
                     </div>
 
+                    <div className={styles.skillpage}>
+                        <div className={styles.skillsHeader}>
+                            <h2>Skills</h2>
+                        </div>
+                        <div className={styles.skillsGrid}>
+                            {[
+                                "Web Development", "Fusion 360", "AutoCAD",
+                                "UI/UX Design", "Next.js", "OpenCV", "Java",
+                                "C++", "Blender", "3D Modeling", "3D Animation",
+                                "Product Design", "3D Visualization", "React", "ML Development", "Simulation"
+                            ].map((skill, i) => (
+                                <div
+                                    key={skill}
+                                    className={`${styles.skillItem} ${i === 0 ? styles.firstSkill : ""}`}
+                                >
+                                    <span>{skill}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-                
             </div>
         </>
-    )
-}
+    );
+};
 
 export default Studio;

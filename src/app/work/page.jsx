@@ -88,10 +88,10 @@ const Work = () => {
 
                         <tr 
                         className="tg" 
-                        onClick={() => window.location.href="/face-recognition"}
+                        onClick={() => window.location.href="https://firstopz.ca"}
                         >
                         <td>N°003</td>
-                        <td><HoverScrollText>HAND TRACKER</HoverScrollText></td>
+                        <td><HoverScrollText>FIRSTOPZ</HoverScrollText></td>
                         <td>2025</td>
                         </tr>
 

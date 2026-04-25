@@ -3,6 +3,8 @@ import Link from "next/link"
 import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import HoverScrollText from "./HoverScrollText";
+import Image from "next/image";
+import styles from './Nav.module.css';
 
 const Nav = () => {
     const router = useTransitionRouter();
@@ -39,7 +41,7 @@ const Nav = () => {
             <div className="col">
                 <div className="nav-logo">
                     <Link href="/">
-                        <HoverScrollText>gurshaan gill/gurshh</HoverScrollText>
+                        <HoverScrollText>gurshaan gill</HoverScrollText>
                     </Link>
                 </div>
             </div>
