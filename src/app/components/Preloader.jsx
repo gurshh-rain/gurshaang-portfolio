@@ -10,6 +10,14 @@ CustomEase.create("smooth", "0.76, 0, 0.24, 1");
 
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%<>/\\[]{}~^*";
 
+// Solid ring resting radius
+const R_SOLID_REST = 95;
+// Dashed ring resting radius (bigger)
+const R_DASHED_REST = 118;
+// On hover: solid expands, dashed shrinks — they swap
+const R_SOLID_HOVER = 118;
+const R_DASHED_HOVER = 95;
+
 function HackText({ lines, delay = 0, style = {}, align = "left" }) {
   const containerRef = useRef(null);
 
@@ -17,7 +25,6 @@ function HackText({ lines, delay = 0, style = {}, align = "left" }) {
     const el = containerRef.current;
     if (!el) return;
 
-    // Build spans for each char
     lines.forEach((line, li) => {
       const lineEl = el.children[li];
       if (!lineEl) return;
@@ -34,7 +41,6 @@ function HackText({ lines, delay = 0, style = {}, align = "left" }) {
       });
     });
 
-    // Animate each char: fade in with glitch flickers then resolve
     const allSpans = Array.from(el.querySelectorAll("span"));
     allSpans.forEach((span, i) => {
       const resolveAt = delay + i * 28 + Math.random() * 18;
@@ -87,6 +93,7 @@ export default function Preloader({ onComplete }) {
   const overlayRef = useRef(null);
   const circleTrackRef = useRef(null);
   const circleProgressRef = useRef(null);
+  const circleDashedRef = useRef(null);
   const logoRef = useRef(null);
   const nameRef = useRef(null);
   const percentRef = useRef(null);
@@ -101,8 +108,8 @@ export default function Preloader({ onComplete }) {
   const [phase, setPhase] = useState("spin");
   const [showFrameMeta, setShowFrameMeta] = useState(false);
 
-  const R = 95;
-  const CIRC = 2 * Math.PI * R;
+  const CIRC_SOLID = 2 * Math.PI * R_SOLID_REST;
+  const CIRC_DASHED = 2 * Math.PI * R_DASHED_REST;
 
   // Initial spin + load phase
   useEffect(() => {
@@ -110,13 +117,14 @@ export default function Preloader({ onComplete }) {
 
     gsap.set(circleTrackRef.current, {
       opacity: 0,
-      strokeDasharray: CIRC,
-      strokeDashoffset: CIRC,
+      strokeDasharray: CIRC_SOLID,
+      strokeDashoffset: CIRC_SOLID,
     });
     gsap.set(circleProgressRef.current, {
       opacity: 0,
-      strokeDashoffset: CIRC,
+      strokeDashoffset: CIRC_SOLID,
     });
+    gsap.set(circleDashedRef.current, { opacity: 0 });
 
     tl.to(circleTrackRef.current, {
       opacity: 1,
@@ -146,7 +154,7 @@ export default function Preloader({ onComplete }) {
         if (percentRef.current) percentRef.current.textContent = v;
         if (circleProgressRef.current) {
           circleProgressRef.current.style.strokeDashoffset =
-            CIRC - (v / 100) * CIRC;
+            CIRC_SOLID - (v / 100) * CIRC_SOLID;
         }
       },
       onComplete: () => setPhase("enter"),
@@ -160,37 +168,56 @@ export default function Preloader({ onComplete }) {
     );
   }, []);
 
-  // Enter phase
+  // Enter phase — shrink solid ring, show ENTER + dashed ring
   useEffect(() => {
     if (phase !== "enter") return;
     const tl = gsap.timeline();
 
     tl.to(percentRef.current, { opacity: 0, y: -8, duration: 0.25, ease: "smooth" });
+
     tl.fromTo(
       readyRef.current,
       { opacity: 0, y: 8 },
       { opacity: 1, y: 0, duration: 0.3, ease: "smooth" },
       "-=0.1"
     );
+
+    // Solid ring shrinks to resting radius
     tl.to(
       [circleTrackRef.current, circleProgressRef.current],
-      { attr: { r: 68 }, duration: 0.5, ease: "smooth" },
+      { attr: { r: R_SOLID_REST }, duration: 0.5, ease: "smooth" },
       "-=0.1"
     );
+
     tl.to(logoRef.current, { opacity: 0, scale: 0.8, duration: 0.3, ease: "smooth" });
+
+    // ENTER text fades in
     tl.fromTo(
       enterRef.current,
       { opacity: 0, scale: 0.9 },
       { opacity: 1, scale: 1, duration: 0.35, ease: "smooth" },
       "-=0.15"
     );
+
+    // Dashed ring fades in slightly after ENTER
+    tl.fromTo(
+      circleDashedRef.current,
+      { opacity: 0, attr: { r: R_DASHED_REST + 10 } },
+      { opacity: 1, attr: { r: R_DASHED_REST }, duration: 0.5, ease: "smooth" },
+      "-=0.2"
+    );
   }, [phase]);
 
   const handleCircleHover = (enter) => {
     if (phase !== "enter") return;
     gsap.to([circleTrackRef.current, circleProgressRef.current], {
-      attr: { r: enter ? 50 : 68 },
-      duration: 0.35,
+      attr: { r: enter ? R_SOLID_HOVER : R_SOLID_REST },
+      duration: 0.4,
+      ease: "smooth",
+    });
+    gsap.to(circleDashedRef.current, {
+      attr: { r: enter ? R_DASHED_HOVER : R_DASHED_REST },
+      duration: 0.4,
       ease: "smooth",
     });
   };
@@ -201,11 +228,10 @@ export default function Preloader({ onComplete }) {
 
     const tl = gsap.timeline();
 
-    // --- Phase 1: fade out circle UI ---
     tl.to(enterRef.current, { opacity: 0, duration: 0.25, ease: "smooth" });
     tl.to(logoRef.current, { opacity: 0, duration: 0.2, ease: "smooth" }, "-=0.1");
     tl.to(
-      [circleTrackRef.current, circleProgressRef.current],
+      [circleTrackRef.current, circleProgressRef.current, circleDashedRef.current],
       { opacity: 0, duration: 0.4, ease: "smooth" }
     );
     tl.fromTo(
@@ -214,7 +240,6 @@ export default function Preloader({ onComplete }) {
       { opacity: 1, duration: 0.4, ease: "smooth" }
     );
 
-    // --- Phase 2: window contracts, margin reveals, frame meta + hack text fire on contraction complete ---
     tl.to(
       innerWindowRef.current,
       {
@@ -226,7 +251,6 @@ export default function Preloader({ onComplete }) {
       "+=0.5"
     );
 
-    // Frame meta container fades in as window finishes contracting
     tl.fromTo(
       frameMetaRef.current,
       { opacity: 0 },
@@ -240,7 +264,6 @@ export default function Preloader({ onComplete }) {
       "-=1.1"
     );
 
-    // --- Phase 3: velocity wipe bar sweeps across, THEN hack text fires after bar exits ---
     tl.add(() => {
       gsap.set(wipeBarRef.current, { opacity: 1 });
       gsap.set(wipeRef.current, { scaleX: 0, transformOrigin: "left center" });
@@ -256,7 +279,6 @@ export default function Preloader({ onComplete }) {
         const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
         const x = ease * totalW;
 
-        // Subtle velocity: just a gentle width breath + single soft shadow
         const vel = Math.min(t * 2, 1) * (1 - Math.max(0, (t - 0.55) / 0.45));
         const barW = 14 + vel * 6;
         const shadowAlpha = 0.10 + vel * 0.08;
@@ -267,7 +289,6 @@ export default function Preloader({ onComplete }) {
           wipeBarRef.current.style.boxShadow = `-${barW * 1.4}px 0 ${barW * 2}px 1px rgba(255,255,255,${shadowAlpha})`;
         }
 
-        // Erase fill tracks the bar's leading edge directly — no lag
         if (wipeRef.current) {
           wipeRef.current.style.transform = `scaleX(${Math.min(ease, 1)})`;
         }
@@ -275,26 +296,21 @@ export default function Preloader({ onComplete }) {
         if (t < 1) {
           requestAnimationFrame(step);
         } else {
-          // Bar has fully exited — fade it out
           if (wipeBarRef.current) {
             wipeBarRef.current.style.transition = "opacity 0.15s ease";
             wipeBarRef.current.style.opacity = "0";
           }
-
-          // Bar done — hack text already fired on window contraction complete
         }
       };
 
       requestAnimationFrame(step);
     }, "+=0.5");
 
-    // --- Phase 4: window expands back to full, then overlay fades ---
-    // We add a delay here to let the wipe + hack text breathe before expanding
     tl.to(innerWindowRef.current, {
       margin: "0px",
       duration: 1.2,
       ease: "hop",
-      delay: 1.8, // wipe (~0.82s) + breath (0.32s) + hack text settling (~0.6s)
+      delay: 1.8,
     });
 
     tl.to(
@@ -325,7 +341,7 @@ export default function Preloader({ onComplete }) {
         pointerEvents: "all",
       }}
     >
-      {/* Frame meta — white margin area with hacking text */}
+      {/* Frame meta */}
       <div
         ref={frameMetaRef}
         style={{
@@ -336,95 +352,57 @@ export default function Preloader({ onComplete }) {
           zIndex: 4,
         }}
       >
-        {/* Top-left */}
         <div style={{ position: "absolute", top: "1.6vh", left: "1.5vw" }}>
           {showFrameMeta ? (
             <HackText lines={["GURSHAAN GILL", "PORTFOLIO"]} delay={0} />
           ) : (
             <div style={{ fontSize: "9px", lineHeight: 1.9, color: "transparent" }}>
-              <div>GURSHAAN GILL</div>
-              <div>PORTFOLIO</div>
+              <div>GURSHAAN GILL</div><div>PORTFOLIO</div>
             </div>
           )}
         </div>
 
-        {/* Top-center */}
-        <div
-          style={{
-            position: "absolute",
-            top: "1.6vh",
-            left: "50%",
-            transform: "translateX(-50%)",
-            textAlign: "center",
-          }}
-        >
+        <div style={{ position: "absolute", top: "1.6vh", left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>
           {showFrameMeta ? (
-            <HackText
-              lines={["TORONTO GMT -5", "43.6532°N, 79.3832°W"]}
-              delay={120}
-              align="center"
-            />
+            <HackText lines={["TORONTO GMT -5", "43.6532°N, 79.3832°W"]} delay={120} align="center" />
           ) : (
             <div style={{ fontSize: "9px", lineHeight: 1.9, color: "transparent" }}>
-              <div>TORONTO GMT -5</div>
-              <div>43.6532°N, 79.3832°W</div>
+              <div>TORONTO GMT -5</div><div>43.6532°N, 79.3832°W</div>
             </div>
           )}
         </div>
 
-        {/* Top-right */}
         <div style={{ position: "absolute", top: "1.6vh", right: "1.5vw" }}>
           {showFrameMeta ? (
-            <HackText
-              lines={["TORONTO, ON", "OVERVIEW: 01 PROJECTS"]}
-              delay={240}
-              align="right"
-              style={{ textAlign: "right" }}
-            />
+            <HackText lines={["TORONTO, ON", "OVERVIEW: 01 PROJECTS"]} delay={240} align="right" style={{ textAlign: "right" }} />
           ) : (
             <div style={{ fontSize: "9px", lineHeight: 1.9, color: "transparent", textAlign: "right" }}>
-              <div>TORONTO, ON</div>
-              <div>OVERVIEW: 01 PROJECTS</div>
+              <div>TORONTO, ON</div><div>OVERVIEW: 01 PROJECTS</div>
             </div>
           )}
         </div>
 
-        {/* Bottom-left */}
         <div style={{ position: "absolute", bottom: "1.6vh", left: "1.5vw" }}>
           {showFrameMeta ? (
             <HackText lines={["GURSHAAN GILL", "PORTFOLIO"]} delay={360} />
           ) : (
             <div style={{ fontSize: "9px", lineHeight: 1.9, color: "transparent" }}>
-              <div>GURSHAAN GILL</div>
-              <div>PORTFOLIO</div>
+              <div>GURSHAAN GILL</div><div>PORTFOLIO</div>
             </div>
           )}
         </div>
 
-        {/* Bottom-center-left */}
         <div style={{ position: "absolute", bottom: "1.6vh", left: "20vw" }}>
           {showFrameMeta ? (
             <HackText lines={["OVERVIEW:", "01 PROJECTS"]} delay={440} />
           ) : (
             <div style={{ fontSize: "9px", lineHeight: 1.9, color: "transparent" }}>
-              <div>OVERVIEW:</div>
-              <div>01 PROJECTS</div>
+              <div>OVERVIEW:</div><div>01 PROJECTS</div>
             </div>
           )}
         </div>
 
-        {/* Bottom strip — right side */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "1.6vh",
-            left: "50%",
-            right: "1.5vw",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-          }}
-        >
+        <div style={{ position: "absolute", bottom: "1.6vh", left: "50%", right: "1.5vw", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
           {showFrameMeta ? (
             <>
               <HackText lines={["60.0–250.0 HZ"]} delay={300} />
@@ -444,208 +422,116 @@ export default function Preloader({ onComplete }) {
       {/* Main black inner window */}
       <div
         ref={innerWindowRef}
-        style={{
-          position: "absolute",
-          inset: 0,
-          margin: 0,
-          background: "#0a0a0a",
-          overflow: "hidden",
-          zIndex: 3,
-        }}
+        style={{ position: "absolute", inset: 0, margin: 0, background: "#0a0a0a", overflow: "hidden", zIndex: 3 }}
       >
-        {/* Eraser — black fill that expands left→right behind the bar */}
+        {/* Eraser */}
         <div
           ref={wipeRef}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "#0a0a0a",
-            zIndex: 9,
-            opacity: 1,
-            transform: "scaleX(0)",
-            transformOrigin: "left center",
-          }}
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", background: "#0a0a0a", zIndex: 9, opacity: 1, transform: "scaleX(0)", transformOrigin: "left center" }}
         />
 
         {/* Velocity wipe bar */}
         <div
           ref={wipeBarRef}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: "-80px",
-            width: "14px",
-            height: "100%",
-            background: "#ffffff",
-            zIndex: 10,
-            opacity: 0,
-          }}
+          style={{ position: "absolute", top: 0, left: "-80px", width: "14px", height: "100%", background: "#ffffff", zIndex: 10, opacity: 0 }}
         />
 
         {/* READY */}
-        <div
-          ref={readyRef}
-          style={{
-            position: "absolute",
-            top: "2rem",
-            left: "2rem",
-            fontSize: "17px",
-            letterSpacing: "0.1em",
-            color: "#fff",
-            opacity: 0,
-          }}
-        >
+        <div ref={readyRef} style={{ position: "absolute", top: "2rem", left: "2rem", fontSize: "17px", letterSpacing: "0.1em", color: "#fff", opacity: 0 }}>
           READY
         </div>
 
         {/* Percent */}
-        <div
-          ref={percentRef}
-          style={{
-            position: "absolute",
-            top: "2rem",
-            left: "2rem",
-            fontSize: "17px",
-            letterSpacing: "0.1em",
-            color: "#fff",
-            opacity: 0,
-          }}
-        >
+        <div ref={percentRef} style={{ position: "absolute", top: "2rem", left: "2rem", fontSize: "17px", letterSpacing: "0.1em", color: "#fff", opacity: 0 }}>
           0
         </div>
 
         {/* Name */}
-        <div
-          ref={nameRef}
-          style={{
-            position: "absolute",
-            bottom: "2rem",
-            left: "2rem",
-            fontSize: "20px",
-            fontWeight: "600",
-            letterSpacing: "0.1em",
-            color: "#fff",
-            opacity: 0,
-            lineHeight: 1.2,
-          }}
-        >
+        <div ref={nameRef} style={{ position: "absolute", bottom: "2rem", left: "2rem", fontSize: "20px", fontWeight: "600", letterSpacing: "0.1em", color: "#fff", opacity: 0, lineHeight: 1.2 }}>
           <div>GURSHAAN GILL</div>
           <div>PORTFOLIO</div>
         </div>
 
         {/* AUTHORIZED ACCESS */}
-        <div
-          ref={authRef}
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "10px",
-            letterSpacing: "0.2em",
-            color: "#fff",
-            opacity: 0,
-            textAlign: "center",
-            lineHeight: 1.6,
-            zIndex: 5,
-            pointerEvents: "none",
-          }}
-        >
+        <div ref={authRef} style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "10px", letterSpacing: "0.2em", color: "#fff", opacity: 0, textAlign: "center", lineHeight: 1.6, zIndex: 5, pointerEvents: "none" }}>
           AUTHORIZED ACCESS
         </div>
 
-        {/* Center: SVG circle + GG + ENTER */}
+        {/* Circle + click zone — restricted to 260×260 hit area */}
         <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: phase === "enter" ? "pointer" : "default",
-          }}
-          onClick={handleEnterClick}
-          onMouseEnter={() => handleCircleHover(true)}
-          onMouseLeave={() => handleCircleHover(false)}
+          style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}
         >
-          <div style={{ position: "relative", width: 220, height: 220 }}>
+          {/* Hit area — only the circle zone is clickable */}
+          <div
+            style={{
+              position: "relative",
+              width: 260,
+              height: 260,
+              cursor: phase === "enter" ? "pointer" : "default",
+              borderRadius: "50%",
+            }}
+            onClick={handleEnterClick}
+            onMouseEnter={() => handleCircleHover(true)}
+            onMouseLeave={() => handleCircleHover(false)}
+          >
             <svg
-              width="220"
-              height="220"
-              viewBox="0 0 220 220"
-              style={{
-                position: "absolute",
-                inset: 0,
-                transform: "rotate(-90deg)",
-              }}
+              width="260"
+              height="260"
+              viewBox="0 0 260 260"
+              style={{ position: "absolute", inset: 0, transform: "rotate(-90deg)" }}
             >
+              {/* Dashed outer ring */}
+              <circle
+                ref={circleDashedRef}
+                cx="130"
+                cy="130"
+                r={R_DASHED_REST}
+                fill="none"
+                stroke="#ffffff"
+                strokeWidth="1"
+                strokeDasharray="4 6"
+                opacity="0"
+              />
+
+              {/* Solid track */}
               <circle
                 ref={circleTrackRef}
-                cx="110"
-                cy="110"
-                r={R}
+                cx="130"
+                cy="130"
+                r={R_SOLID_REST}
                 fill="none"
                 stroke="#2a2a2a"
                 strokeWidth="1.5"
                 opacity="0"
               />
+
+              {/* Solid progress */}
               <circle
                 ref={circleProgressRef}
-                cx="110"
-                cy="110"
-                r={R}
+                cx="130"
+                cy="130"
+                r={R_SOLID_REST}
                 fill="none"
                 stroke="#ffffff"
                 strokeWidth="1.5"
-                strokeDasharray={CIRC}
-                strokeDashoffset={CIRC}
+                strokeDasharray={CIRC_SOLID}
+                strokeDashoffset={CIRC_SOLID}
                 strokeLinecap="round"
                 opacity="0"
               />
             </svg>
 
             {/* Logo */}
-            <div
-              ref={logoRef}
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <div ref={logoRef} style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
               <img
                 src="/logo.png"
                 alt="GG"
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  objectFit: "contain",
-                  filter: "invert(1)",
-                }}
+                style={{ width: "36px", height: "36px", objectFit: "contain", filter: "invert(1)" }}
               />
             </div>
 
             {/* ENTER */}
-            <div
-              ref={enterRef}
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "10px",
-                letterSpacing: "0.25em",
-                color: "#fff",
-                opacity: 0,
-              }}
-            >
+            <div ref={enterRef} style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "10px", letterSpacing: "0.25em", color: "#fff", opacity: 0 }}>
               ENTER
             </div>
           </div>

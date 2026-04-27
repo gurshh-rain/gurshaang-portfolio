@@ -1,0 +1,479 @@
+/* ── Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Barlow+Condensed:wght@300;400;500;600&display=swap');
+
+/* ── Reveal animation ── */
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.85s cubic-bezier(0.76, 0, 0.24, 1),
+                transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Custom cursor ── */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.25s cubic-bezier(0.76, 0, 0.24, 1),
+                background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: #fff;
+}
+.cursorActive {
+    transform: translate(-50%, -50%) scale(1);
+    background: rgba(255,255,255,0.08);
+}
+
+/* ── Nav ── */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: difference;
+}
+.navBack {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.navBack:hover { opacity: 0.5; }
+.navLabel {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: #fff;
+}
+
+/* ── Main ── */
+.main {
+    background: #080808;
+    color: #ebebeb;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ── Hero ── */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.heroMedia {
+    position: absolute;
+    inset: -10%;
+    width: 120%;
+    height: 120%;
+}
+
+.heroVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%) brightness(0.5);
+}
+
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        #080808 0%,
+        rgba(8,8,8,0.5) 40%,
+        transparent 100%
+    );
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    padding: 0 2.5rem 5rem;
+    max-width: 900px;
+}
+
+.heroEyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: #666;
+    margin-bottom: 1.2rem;
+}
+
+.heroTitle {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.heroLine {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: clamp(4.5rem, 11vw, 10rem);
+    letter-spacing: -0.01em;
+    color: #ebebeb;
+    display: block;
+}
+
+.heroLineItalic {
+    font-style: italic;
+    font-weight: 500;
+    color: #ebebeb;
+    padding-left: 2rem;
+}
+
+.heroDivider {
+    width: 40px;
+    height: 1px;
+    background: #ebebeb;
+    margin-bottom: 1.5rem;
+}
+
+.heroSub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.9;
+    color: #666;
+    max-width: 400px;
+    letter-spacing: 0.02em;
+}
+
+.scrollHint {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+.scrollHint span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: #333;
+    writing-mode: vertical-rl;
+}
+.scrollLine {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, #ebebeb, transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+    50%       { opacity: 1;   transform: scaleY(1); }
+}
+
+/* ── Meta strip ── */
+.metaStrip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    margin: 0 2.5rem;
+}
+.metaItem {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-right: 1px solid #1a1a1a;
+}
+.metaItem:last-child { border-right: none; }
+.metaLabel {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: #333;
+    text-transform: uppercase;
+}
+.metaValue {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #ebebeb;
+    letter-spacing: 0.01em;
+}
+
+/* ── Body section ── */
+.body {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 6rem 2.5rem;
+    max-width: 860px;
+}
+.bodyIndex {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: #222;
+    padding-top: 0.4rem;
+}
+.bodyHeading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: #ebebeb;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.8rem;
+    line-height: 1.05;
+}
+.bodyCopy {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 2;
+    color: #555;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.2rem;
+}
+.bodyCopy strong {
+    color: #ebebeb;
+    font-weight: 600;
+}
+
+/* ── Full bleed image ── */
+.imageFullBleed {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    cursor: none;
+}
+.imageFullBleedImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%) brightness(0.85);
+    transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1),
+                filter 0.8s ease;
+}
+.imageFullBleed:hover .imageFullBleedImg {
+    transform: scale(1.03);
+    filter: grayscale(60%) brightness(0.95);
+}
+.imageCaption {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.35);
+}
+
+/* ── Split section ── */
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+    margin: 0 2.5rem;
+    gap: 4rem;
+    align-items: center;
+    padding: 4rem 0;
+    border-top: 1px solid #1a1a1a;
+}
+.splitImage {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    cursor: none;
+}
+.splitImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%) brightness(0.85);
+    transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1),
+                filter 0.8s ease;
+}
+.splitImage:hover .splitImg {
+    transform: scale(1.04);
+    filter: grayscale(60%) brightness(0.95);
+}
+.splitSpecs {
+    padding: 2rem 0;
+}
+.specsTitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ebebeb;
+    margin-bottom: 2rem;
+    letter-spacing: -0.01em;
+}
+.specsList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #1a1a1a;
+}
+.specsItem {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #1a1a1a;
+    transition: padding-left 0.2s ease;
+}
+.specsItem:hover {
+    padding-left: 0.5rem;
+}
+.specsKey {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: #333;
+    text-transform: uppercase;
+    flex: 1;
+}
+.specsDot {
+    flex: 1;
+    height: 1px;
+    background: #1a1a1a;
+    margin: 0 1rem;
+}
+.specsVal {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ebebeb;
+    letter-spacing: 0.02em;
+    text-align: right;
+}
+
+/* ── Footer nav ── */
+.footerNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 2.5rem 6rem;
+    border-top: 1px solid #1a1a1a;
+    margin-top: 4rem;
+}
+.footerLabel {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: #222;
+}
+.footerNext {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ebebeb;
+    cursor: pointer;
+    letter-spacing: -0.01em;
+    transition: letter-spacing 0.3s cubic-bezier(0.76, 0, 0.24, 1),
+                opacity 0.2s;
+}
+.footerNext:hover {
+    letter-spacing: 0.04em;
+    opacity: 0.6;
+}
+
+/* ── Video section ── */
+.videoSection {
+    padding: 0 2.5rem 6rem;
+}
+.videoSectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+.videoSectionIndex {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: #333;
+    white-space: nowrap;
+}
+.videoSectionLine {
+    flex: 1;
+    height: 1px;
+    background: #1a1a1a;
+}
+.videoSectionLabel {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: #333;
+    white-space: nowrap;
+}
+.videoSectionWrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.videoSectionVideo {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%) brightness(0.85);
+    transition: filter 0.8s ease;
+}
+.videoSectionWrap:hover .videoSectionVideo {
+    filter: grayscale(40%) brightness(0.95);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .heroContent  { padding: 0 1.2rem 4rem; }
+    .metaStrip    { grid-template-columns: 1fr 1fr; margin: 0 1.2rem; }
+    .body         { grid-template-columns: 1fr; padding: 4rem 1.2rem; }
+    .bodyIndex    { display: none; }
+    .split        { grid-template-columns: 1fr; margin: 0 1.2rem; }
+    .splitImage   { height: 300px; }
+    .footerNav    { flex-direction: column; gap: 1rem; padding: 3rem 1.2rem; }
+    .imageCaption { left: 1.2rem; }
+}

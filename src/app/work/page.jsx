@@ -92,7 +92,7 @@ const Work = () => {
                         >
                         <td>N°003</td>
                         <td><HoverScrollText>FIRSTOPZ</HoverScrollText></td>
-                        <td>2025</td>
+                        <td>2025-CURRENT</td>
                         </tr>
 
                         <tr 
@@ -106,11 +106,11 @@ const Work = () => {
 
                         <tr 
                         className="tg" 
-                        onClick={handleNavigation("/robot")}
+                        onClick={handleNavigation("/robotic-arm")}
                         >
                         <td>N°005</td>
-                        <td><HoverScrollText>ROBOT DESIGN</HoverScrollText></td>
-                        <td>2024-CURRENT</td>
+                        <td><HoverScrollText>SURGICAL ARM</HoverScrollText></td>
+                        <td>2026-CURRENT</td>
                         </tr>
 
                         <tr 
