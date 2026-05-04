@@ -65,13 +65,18 @@ const Nav = () => {
                 </div>
                 <div className="nav-copy">
                     <div className="nav-item">
-                        <Link href="https://www.artstation.com/gurshh">
-                            <HoverScrollText>artstation</HoverScrollText>
+                        <Link href="https://www.linkedin.com/in/gurshaan-gill-5b48603a4/">
+                            <HoverScrollText>linkedin</HoverScrollText>
                         </Link>
                     </div>
                     <div className="nav-item">
                         <Link href="https://www.instagram.com/gurshhhh_">
                             <HoverScrollText>instagram</HoverScrollText>
+                        </Link>
+                    </div>
+                    <div className="nav-item">
+                        <Link href="https://www.artstation.com/gurshh">
+                            <HoverScrollText>artstation</HoverScrollText>
                         </Link>
                     </div>
                 </div>

@@ -222,7 +222,7 @@ span {
   font-size: 2em;
   font-weight: 700;
   color: var(--bg);
-  background-color: #000;
+  background-color: #f1f1f1;
   border-radius: 10px;
 }
 .col button:hover {

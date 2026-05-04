@@ -41,18 +41,10 @@ const Contact = () => {
 
                 </div>
                 <div className="col">
-                    <h2>Available for freelance.</h2>
+                    <h2>Available for hire/freelance.</h2>
                     <div className="contact-copy">
                         <h2>Collaborations / Freelance</h2>
                         <h2>gurshaan1124@gmail.com</h2>
-                    </div>
-                    <div className="contact-copy">
-                        <h2>Inquiries</h2>
-                        <h2>support@gmail.com</h2>
-                    </div>
-                    <div className="contact-copy">
-                        <h2>BLANKWEAR</h2>
-                        <h2>blank@gmail.com</h2>
                     </div>
                     <div className="contact-copy">
                     <button onClick={() => setIsOpen(true)}>
@@ -131,8 +123,8 @@ const Contact = () => {
             <footer className="contact-bottom">
                 <div className="center">
                     <div className="socials">
-                        <Link href="https://www.artstation.com/gurshh">
-                            <HoverScrollText>artstation</HoverScrollText>
+                        <Link href="https://www.linkedin.com/in/gurshaan-gill-5b48603a4/">
+                            <HoverScrollText>linkedin</HoverScrollText>
                         </Link>
                     </div>
                     <div className="socials">
@@ -141,12 +133,12 @@ const Contact = () => {
                         </Link>
                     </div>
                     <div className="socials">
-                        <Link href="https://www.artstation.com/gurshh">
-                            <HoverScrollText>twitter</HoverScrollText>
+                        <Link href="https://github.com/gurshh-rain?tab=repositories">
+                            <HoverScrollText>github</HoverScrollText>
                         </Link>
                     </div>
                     <div className="socials">
-                        <Link href="https://github.com/gurshh-rain?tab=repositories">
+                        <Link href="https://www.artstation.com/gurshh">
                             <HoverScrollText>artstation</HoverScrollText>
                         </Link>
                     </div>
