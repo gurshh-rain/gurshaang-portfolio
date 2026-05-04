@@ -70,7 +70,6 @@ const Work = () => {
                     <tbody>
                         <tr 
                         className="tg" 
-                        onClick={handleNavigation("/GGILL-025")}
                         >
                         <td>N°001</td>
                         <td><HoverScrollText>GURSHAAN GILL PORTFOLIO</HoverScrollText></td>
@@ -124,20 +123,20 @@ const Work = () => {
 
                         <tr 
                         className="tg" 
-                        onClick={() => window.location.href="/corely-ai"}
+                        onClick={() => window.location.href=""}
                         >
                         <td>N°007</td>
-                        <td><HoverScrollText>CORELY.AI</HoverScrollText></td>
-                        <td>2024</td>
+                        <td><HoverScrollText>X-VOID DRONE</HoverScrollText></td>
+                        <td>2026</td>
                         </tr>
 
                         <tr 
                         className="tg" 
-                        onClick={() => window.location.href="/blankwear"}
+                        onClick={handleNavigation("/nvidia")}
                         >
                         <td>N°008</td>
-                        <td><HoverScrollText>TRADING SCRIPTS</HoverScrollText></td>
-                        <td>2025</td>
+                        <td><HoverScrollText>NVIDIA 3090 PRODUCT RENDER</HoverScrollText></td>
+                        <td>2026</td>
                         </tr>
                     </tbody>
                     </table>

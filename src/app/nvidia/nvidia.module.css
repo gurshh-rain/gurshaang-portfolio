@@ -1,0 +1,122 @@
+/* ─── Reveal animation ─────────────────────────────────────── */
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.85s cubic-bezier(0.76, 0, 0.24, 1),
+                transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ─── Page shell ────────────────────────────────────────────── */
+.main {
+    background: #080808;
+    color: #ebebeb;
+    /* No overflow:hidden here — we need native scroll */
+}
+
+/* ─── Sticky video layer ────────────────────────────────────── */
+.videoPin {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+    /* Stays behind .content thanks to z-index */
+    z-index: 0;
+}
+
+.heroVideo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(2.5);
+}
+
+.heroText {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    z-index: 1;
+}
+
+.h4 {
+    font-weight: 600;
+}
+
+/* ─── Spacer: keeps the video "on screen" for one viewport ─── */
+/* The video is sticky, so this spacer is what you scroll through
+   before the content panel arrives. Remove or adjust height to
+   control how long the video stays fully visible. */
+.videoSpacer {
+    height: 100svh;
+    /* pointer-events: none so clicks fall through to video if needed */
+    pointer-events: none;
+}
+
+/* ─── Scrolling content panel ───────────────────────────────── */
+.content {
+    position: relative;
+    z-index: 1;                  /* slides over the sticky video */
+    background: #080808;
+    /* Soft top-edge so it doesn't hard-cut over the video */
+    border-radius: 24px 24px 0 0;
+    padding-top: 1px;            /* prevents margin collapse */
+}
+
+/* ─── Body section ──────────────────────────────────────────── */
+.body {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 6rem 2.5rem;
+    max-width: 860px;
+}
+
+.bodyIndex {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: #e7e7e7;
+    padding-top: 0.4rem;
+}
+
+.bodyHeading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: #ebebeb;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.8rem;
+    line-height: 1.05;
+}
+
+.bodyCopy {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 2;
+    color: #ebebeb;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.2rem;
+}
+
+.bodyCopy strong {
+    color: #ebebeb;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .body      { grid-template-columns: 1fr; padding: 4rem 1.2rem; }
+    .bodyIndex { display: none; }
+}
