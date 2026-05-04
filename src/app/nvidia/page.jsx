@@ -48,7 +48,7 @@ const Nvidia = () => {
                 {/* Video pinned to full viewport — sits behind everything */}
                 <div className={styles.videoPin}>
                     <video
-                        src="/nvidiaAnimation/0001-0339.mp4"
+                        src= "https://w36n5ueyeirjmds2.public.blob.vercel-storage.com/0001-0339.MP4"
                         className={styles.heroVideo}
                         autoPlay muted loop playsInline
                     />
