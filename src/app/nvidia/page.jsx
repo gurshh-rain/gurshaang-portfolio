@@ -55,7 +55,7 @@ const Nvidia = () => {
                     <div className={styles.heroText}>
                         <h1>INTRODUCING</h1>
                         <h2>NVIDIA RTX 3090</h2>
-                        <h4 className={styles.h4}>Modeled in Fusion | Animated in Blender</h4>
+                        <h4 className={styles.h4}>Modelled in Fusion | Animated in Blender</h4>
                     </div>
                 </div>
 
