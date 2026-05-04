@@ -45,9 +45,9 @@ const Studio = () => {
                         <div className={styles.skillsGrid}>
                             {[
                                 "Web Development", "Fusion 360", "AutoCAD",
-                                "UI/UX Design", "Next.js", "OpenCV", "Java",
+                                "UI/UX Design", "Next.js", "OpenCV", "Java", "Product Animation",
                                 "C++", "Blender", "3D Modeling", "3D Animation",
-                                "Product Design", "3D Visualization", "React", "ML Development", "Simulation"
+                                "Product Design", "3D Visualization", "React", "ML Development", "Simulation", "Python"
                             ].map((skill, i) => (
                                 <div
                                     key={skill}
