@@ -46,7 +46,7 @@ const Studio = () => {
                             {[
                                 "Web Development", "Fusion 360", "AutoCAD",
                                 "UI/UX Design", "Next.js", "OpenCV", "Java", "Product Animation",
-                                "C++", "Blender", "3D Modeling", "3D Animation",
+                                "C++", "Pandas", "Matplotlib","Blender", "3D Modeling", "3D Animation",
                                 "Product Design", "3D Visualization", "React", "ML Development", "Simulation", "Python"
                             ].map((skill, i) => (
                                 <div

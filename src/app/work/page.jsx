@@ -114,11 +114,11 @@ const Work = () => {
 
                         <tr 
                         className="tg" 
-                        onClick={() => window.location.href="https://www.blankwear.clothing"}
+                        onClick={() => window.location.href=""}
                         >
                         <td>N°006</td>
-                        <td><HoverScrollText>BLANKWEAR</HoverScrollText></td>
-                        <td>2024</td>
+                        <td><HoverScrollText>GESTURE CONTROLLED COMPUTER</HoverScrollText></td>
+                        <td>2026</td>
                         </tr>
 
                         <tr 
@@ -126,9 +126,10 @@ const Work = () => {
                         onClick={() => window.location.href=""}
                         >
                         <td>N°007</td>
-                        <td><HoverScrollText>X-VOID DRONE</HoverScrollText></td>
+                        <td><HoverScrollText>V6 ENGINE</HoverScrollText></td>
                         <td>2026</td>
                         </tr>
+                        
 
                         <tr 
                         className="tg" 
@@ -136,6 +137,87 @@ const Work = () => {
                         >
                         <td>N°008</td>
                         <td><HoverScrollText>NVIDIA 3090 PRODUCT RENDER</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr 
+                        className="tg" 
+                        onClick={() => window.location.href=""}
+                        >
+                        <td>N°009</td>
+                        <td><HoverScrollText>OBJECT TRACKING ROBOT</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr 
+                        className="tg" 
+                        onClick={() => window.location.href=""}
+                        >
+                        <td>N°010</td>
+                        <td><HoverScrollText>BASIC SIGN LANGUAGE DETECTOR</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr 
+                        className="tg" 
+                        onClick={() => window.location.href=""}
+                        >
+                        <td>N°011</td>
+                        <td><HoverScrollText>VIRTUAL PAINT</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr 
+                        className="tg" 
+                        onClick={() => window.location.href=""}
+                        >
+                        <td>N°012</td>
+                        <td><HoverScrollText>ROBOTIC ARM</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr 
+                        className="tg" 
+                        onClick={() => window.location.href=""}
+                        >
+                        <td>N°013</td>
+                        <td><HoverScrollText>BRAIN TUMOR CLASSIFICATION MODEL</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr 
+                        className="tg" 
+                        onClick={() => window.location.href=""}
+                        >
+                        <td>N°014</td>
+                        <td><HoverScrollText>PID AUTO TUNER</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr 
+                        className="tg" 
+                        onClick={() => window.location.href=""}
+                        >
+                        <td>N°015</td>
+                        <td><HoverScrollText>ROAD SEGMENTATION</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr 
+                        className="tg" 
+                        onClick={() => window.location.href=""}
+                        >
+                        <td>N°016</td>
+                        <td><HoverScrollText>CANCER GROWTH PREDICTION MODEL</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr 
+                        className="tg" 
+                        onClick={() => window.location.href=""}
+                        >
+                        <td>N°017</td>
+                        <td><HoverScrollText>STOCK PRICE PREDICTOR</HoverScrollText></td>
                         <td>2026</td>
                         </tr>
                     </tbody>
