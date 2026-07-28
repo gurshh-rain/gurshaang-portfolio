@@ -68,16 +68,16 @@ const Work = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr 
-                        className="tg" 
+                        <tr
+                        className="tg"
                         >
                         <td>N°001</td>
                         <td><HoverScrollText>GURSHAAN GILL PORTFOLIO</HoverScrollText></td>
                         <td>2025</td>
                         </tr>
 
-                        <tr 
-                        className="tg" 
+                        <tr
+                        className="tg"
                         onClick={handleNavigation("/3D-Rendering")}
                         >
                         <td>N°002</td>
@@ -85,8 +85,8 @@ const Work = () => {
                         <td>2015-CURRENT</td>
                         </tr>
 
-                        <tr 
-                        className="tg" 
+                        <tr
+                        className="tg"
                         onClick={() => window.location.href="https://firstopz.ca"}
                         >
                         <td>N°003</td>
@@ -94,8 +94,8 @@ const Work = () => {
                         <td>2025-CURRENT</td>
                         </tr>
 
-                        <tr 
-                        className="tg" 
+                        <tr
+                        className="tg"
                         onClick={() => window.location.href="https://dylanngo.vercel.app"}
                         >
                         <td>N°004</td>
@@ -103,8 +103,8 @@ const Work = () => {
                         <td>2025</td>
                         </tr>
 
-                        <tr 
-                        className="tg" 
+                        <tr
+                        className="tg"
                         onClick={handleNavigation("/robotic-arm")}
                         >
                         <td>N°005</td>
@@ -112,112 +112,152 @@ const Work = () => {
                         <td>2026-CURRENT</td>
                         </tr>
 
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/Modelling-LSTM-Random-Forest-and-XGBoost-to-Forecast-RUL-Metrics-of-NASA-Turbofan-Jet-Engines"}
                         >
                         <td>N°006</td>
+                        <td><HoverScrollText>MODELLING LSTM RANDOM FOREST AND XGBOOST TO FORECAST RUL METRICS OF NASA TURBOFAN JET ENGINES</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/Multi-Temporal-Land-Cover-Classification-and-Deforestation-Detection-via-Convolutional-Neural-Networ"}
+                        >
+                        <td>N°007</td>
+                        <td><HoverScrollText>MULTI TEMPORAL LAND COVER CLASSIFICATION AND DEFORESTATION DETECTION VIA CONVOLUTIONAL NEURAL NETWOR</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/tribe-v2-interactive-brain-viewer-with-user-engagement-tracking"}
+                        >
+                        <td>N°008</td>
+                        <td><HoverScrollText>TRIBE V2 INTERACTIVE BRAIN VIEWER WITH USER ENGAGEMENT TRACKING</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/gesture-controlled-computer"}
+                        >
+                        <td>N°009</td>
                         <td><HoverScrollText>GESTURE CONTROLLED COMPUTER</HoverScrollText></td>
                         <td>2026</td>
                         </tr>
 
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/computer-vision-virtual-paint"}
                         >
-                        <td>N°007</td>
-                        <td><HoverScrollText>V6 ENGINE</HoverScrollText></td>
+                        <td>N°010</td>
+                        <td><HoverScrollText>COMPUTER VISION VIRTUAL PAINT</HoverScrollText></td>
                         <td>2026</td>
                         </tr>
-                        
 
-                        <tr 
-                        className="tg" 
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/realtime-sign-language-interpreter"}
+                        >
+                        <td>N°011</td>
+                        <td><HoverScrollText>REALTIME SIGN LANGUAGE INTERPRETER</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/Gradient-Based-Auto-Tuning-of-PID-Controller-Gains-via-Numerical-Optimization"}
+                        >
+                        <td>N°012</td>
+                        <td><HoverScrollText>GRADIENT BASED AUTO TUNING OF PID CONTROLLER GAINS VIA NUMERICAL OPTIMIZATION</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/ML-Algorithms-Python-Implementation"}
+                        >
+                        <td>N°013</td>
+                        <td><HoverScrollText>ML ALGORITHMS PYTHON IMPLEMENTATION</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/parking-lot-space-counter"}
+                        >
+                        <td>N°014</td>
+                        <td><HoverScrollText>PARKING LOT SPACE COUNTER</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
                         onClick={handleNavigation("/nvidia")}
                         >
-                        <td>N°008</td>
+                        <td>N°015</td>
                         <td><HoverScrollText>NVIDIA 3090 PRODUCT RENDER</HoverScrollText></td>
                         <td>2026</td>
                         </tr>
 
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
-                        >
-                        <td>N°009</td>
-                        <td><HoverScrollText>OBJECT TRACKING ROBOT</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
-                        >
-                        <td>N°010</td>
-                        <td><HoverScrollText>BASIC SIGN LANGUAGE DETECTOR</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
-                        >
-                        <td>N°011</td>
-                        <td><HoverScrollText>VIRTUAL PAINT</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
-                        >
-                        <td>N°012</td>
-                        <td><HoverScrollText>ROBOTIC ARM</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
-                        >
-                        <td>N°013</td>
-                        <td><HoverScrollText>BRAIN TUMOR CLASSIFICATION MODEL</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
-                        >
-                        <td>N°014</td>
-                        <td><HoverScrollText>PID AUTO TUNER</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
-                        >
-                        <td>N°015</td>
-                        <td><HoverScrollText>ROAD SEGMENTATION</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/Diabetes-Disease-Progression-Prediction-with-Gradient-Boosting"}
                         >
                         <td>N°016</td>
-                        <td><HoverScrollText>CANCER GROWTH PREDICTION MODEL</HoverScrollText></td>
+                        <td><HoverScrollText>DIABETES DISEASE PROGRESSION PREDICTION WITH GRADIENT BOOSTING</HoverScrollText></td>
                         <td>2026</td>
                         </tr>
 
-                        <tr 
-                        className="tg" 
-                        onClick={() => window.location.href=""}
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://github.com/gurshh-rain/ML-Framework-Cardiovascular-Risk-Assessment-Comparing-Logitic-Regression-Random-Forest-XGBoost"}
                         >
                         <td>N°017</td>
-                        <td><HoverScrollText>STOCK PRICE PREDICTOR</HoverScrollText></td>
+                        <td><HoverScrollText>ML FRAMEWORK CARDIOVASCULAR RISK ASSESSMENT COMPARING LOGITIC REGRESSION RANDOM FOREST XGBOOST</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        onClick={() => window.location.href="https://framelyai.vercel.app"}
+                        >
+                        <td>N°018</td>
+                        <td><HoverScrollText>FRAMELYAI</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        >
+                        <td>N°019</td>
+                        <td><HoverScrollText>QUADPOD ROBOT</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        >
+                        <td>N°020</td>
+                        <td><HoverScrollText>BIONIC HAND</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        >
+                        <td>N°021</td>
+                        <td><HoverScrollText>FOOTBALL HEATMAP GENERATOR</HoverScrollText></td>
+                        <td>2026</td>
+                        </tr>
+
+                        <tr
+                        className="tg"
+                        >
+                        <td>N°022</td>
+                        <td><HoverScrollText>CUSTOM RAG PIPELINE</HoverScrollText></td>
                         <td>2026</td>
                         </tr>
                     </tbody>

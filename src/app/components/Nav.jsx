@@ -75,8 +75,8 @@ const Nav = () => {
                         </Link>
                     </div>
                     <div className="nav-item">
-                        <Link href="https://www.artstation.com/gurshh">
-                            <HoverScrollText>artstation</HoverScrollText>
+                        <Link href="https://github.com/gurshh-rain">
+                            <HoverScrollText>github</HoverScrollText>
                         </Link>
                     </div>
                 </div>
