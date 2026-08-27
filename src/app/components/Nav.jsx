@@ -76,13 +76,18 @@ const Nav = () => {
                         </Link>
                     </div>
                     <div className="nav-item">
+                        <Link href="https://github.com/gurshh-rain">
+                            <HoverScrollText>github</HoverScrollText>
+                        </Link>
+                    </div>
+                    <div className="nav-item">
                         <Link href="https://www.instagram.com/gurshhhh_">
                             <HoverScrollText>instagram</HoverScrollText>
                         </Link>
                     </div>
                     <div className="nav-item">
                         <Link href="https://github.com/gurshh-rain">
-                            <HoverScrollText>github</HoverScrollText>
+                            <HoverScrollText>resume</HoverScrollText>
                         </Link>
                     </div>
                 </div>
