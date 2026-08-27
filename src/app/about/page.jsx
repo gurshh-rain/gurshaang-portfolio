@@ -20,12 +20,20 @@ const Studio = () => {
                     <div className={styles.headerRow}>
                         <p className={styles.aboutTag}>@My Story</p>
                         <h2 className={styles.brief}>
-                            Hey there. I'm Gurshaan Gill — living in Toronto,
-                            turning <span>ideas</span> into{" "}
-                            <span>impactful</span> experiences. Programming
-                            languages, data structures, web dev, 3D rendering,
-                            AI, and beyond. Currently exploring the big ideas in{" "}
-                            <span>mechatronics</span>.
+                            Hey there. I'm Gurshaan Gill — a Mechatronics
+                            Engineering student at the <span>University of
+                            Waterloo</span> (Tron '31), splitting time between{" "}
+                            <span>Toronto</span> and <span>Waterloo</span>.
+                            I like making things that actually move, think, and
+                            work in the real world — spanning{" "}
+                            <span>robotics</span>, <span>controls</span>,{" "}
+                            <span>computer vision</span>, and{" "}
+                            <span>agentic AI</span>. My work ranges from
+                            ROS 2 fleets and LiDAR-based SLAM to EEG
+                            neuroscience and multi-agent research pipelines,
+                            with a focus on building{" "}
+                            <span>from first principles</span> rather than
+                            relying on black-box tools.
                         </h2>
                     </div>
 
@@ -44,10 +52,13 @@ const Studio = () => {
                         </div>
                         <div className={styles.skillsGrid}>
                             {[
-                                "Web Development", "Fusion 360", "AutoCAD",
-                                "UI/UX Design", "Next.js", "OpenCV", "Java", "Product Animation",
-                                "C++", "Pandas", "Matplotlib","Blender", "3D Modeling", "3D Animation",
-                                "Product Design", "3D Visualization", "React", "ML Development", "Simulation", "Python"
+                                "Python", "C++", "MATLAB", "Java", "TypeScript",
+                                "PyTorch", "scikit-learn", "OpenCV", "MediaPipe",
+                                "ROS 2", "SLAM", "Nav2", "PID Control", "Gazebo",
+                                "Isaac Sim", "MoveIt 2", "Pandas", "NumPy",
+                                "Fusion 360", "SOLIDWORKS", "Blender", "ANSYS",
+                                "Next.js", "React", "Web Development", "UI/UX Design",
+                                "ML Development", "Computer Vision", "3D Modeling", "Agentic AI"
                             ].map((skill, i) => (
                                 <div
                                     key={skill}

@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import Nav from "./components/Nav";
 import { ViewTransitions } from "next-view-transitions";
@@ -22,10 +23,26 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+// Read the theme cookie during SSR so the server-rendered <html> already
+// has the right data-theme attribute. This keeps SSR markup in sync with
+// the client (no hydration mismatch) and avoids any flash of wrong theme
+// since the attribute is set in the initial HTML, not by a boot script.
+async function getInitialTheme() {
+  try {
+    const store = await cookies();
+    const v = store.get("theme")?.value;
+    return v === "light" ? "light" : "dark";
+  } catch {
+    return "dark";
+  }
+}
+
+export default async function RootLayout({ children }) {
+  const initialTheme = await getInitialTheme();
+
   return (
     <ViewTransitions>
-      <html lang="en">
+      <html lang="en" data-theme={initialTheme}>
         <body>
           <PreloaderWrapper>{children}</PreloaderWrapper>
         </body>

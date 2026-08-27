@@ -10,6 +10,18 @@
   --bg: #0a0a0a;
 }
 
+/* Light theme — toggled by setting data-theme="light" on <html>.
+   Dark is the default (no attribute). */
+:root[data-theme="light"] {
+  --fg: #0a0a0a;
+  --bg: #f4f1ea;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -21,6 +33,36 @@
 body {
   background-color: var(--bg);
   color: var(--fg);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+a, p, h1, h2, h3, h4, h5, h6 {
+  transition: color 0.35s ease;
+}
+
+/* Smooth theme cross-fade. The View Transitions API takes a snapshot of
+   the old and new state into ::view-transition-old/new(root); we animate
+   the opacity between them so the page fades instead of snapping. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(root) {
+  animation-name: theme-fade-out;
+}
+
+::view-transition-new(root) {
+  animation-name: theme-fade-in;
+}
+
+@keyframes theme-fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes theme-fade-in {
+  from { opacity: 0; }
 }
 
 #container3D {
@@ -63,6 +105,10 @@ a, p {
   display: flex;
   gap: 1em;
   z-index: 2;
+  background-color: color-mix(in srgb, var(--bg) 55%, transparent);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
 }
 
 .nav-item:hover {
@@ -78,6 +124,44 @@ a, p {
   flex: 2;
   display: flex;
   justify-content: space-between;
+}
+
+/* Theme toggle — bare icon, no chrome. Rendered as a div, so there are
+   no user-agent button styles to defeat. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5em;
+  padding: 0;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle svg {
+  display: block;
+  color: var(--fg);
+  fill: none;
+  stroke: currentColor;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.6;
+}
+
+.theme-toggle:hover svg {
+  opacity: 1;
+}
+
+.theme-toggle:focus-visible {
+  outline: 1px solid color-mix(in srgb, var(--fg) 60%, transparent);
+  outline-offset: 2px;
+  opacity: 1;
 }
 
 .home {
@@ -98,6 +182,26 @@ a, p {
 .home .header h1 {
   font-size: 20.5vw;
   text-align: center;
+}
+
+.home .header .tagline {
+  text-align: center;
+  margin: 0.6rem auto 0;
+  width: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: clamp(0.75rem, 1.1vw, 1rem);
+  font-weight: 300;
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.home .header .tagline.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .letter {
@@ -159,8 +263,7 @@ a, p {
 }
 
 span {
-  font-family: "Corinthia", cursive;
-  font-style: italic;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .contact {
@@ -324,41 +427,74 @@ td, th {
   padding: 0.85em 1em;
   font-size: 0.9em;
   font-weight: 600;
-  z-index: 100;
-}
-
-tr {
-  position: relative;
-  overflow: hidden;
-  transition: color 0.25s ease;
-  background-color: var(--bg);
-  color: var(--fg);
-}
-tr * {
   position: relative;
   z-index: 1;
 }
 
-tr::before {
+td {
+  background-color: var(--bg);
+  transition: color 0.25s ease;
+}
+
+/* Row-level hover (cursor + color) lives on the tr, but the orange fill
+   is anchored to each td because <tr> is a table-row box and does not
+   behave as a reliable positioning container — placing the fill on the
+   pseudo of the tr was causing it to escape the table and span the page. */
+tr {
+  transition: color 0.25s ease;
+  color: var(--fg);
+}
+
+td::before {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 0;
+  inset: 0;
   background-color: rgb(255, 72, 0);
-  z-index: 0;
-  transition: top 0.55s ease, height 0.55s ease;
+  z-index: -1;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.45s cubic-bezier(0.9, 0, 0.1, 1);
+}
+
+tr:hover td::before {
+  transform: scaleY(1);
 }
 
 tr:hover {
-  color: var(--bg);
   cursor: pointer;
 }
 
-tr:hover::before {
-  top: 0;
-  height: 100%;
+tr:hover td {
+  color: var(--bg);
+}
+
+.project-desc {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  font-size: 0.78em;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--fg);
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.9, 0, 0.1, 1),
+              opacity 0.35s ease,
+              margin-top 0.45s ease;
+  pointer-events: none;
+}
+
+tr:hover .project-desc,
+tr:focus-within .project-desc {
+  max-height: 6em;
+  opacity: 1;
+  margin-top: 0.4em;
+}
+
+tr:hover .project-desc,
+tr:focus-within .project-desc {
+  color: var(--bg);
 }
 
 .work h1 {
@@ -370,6 +506,122 @@ tr:hover::before {
 .work h1.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Experience page */
+.experience {
+  padding: 10em 2em 4em;
+  width: 100vw;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  background-color: var(--bg);
+}
+
+.experience h1 {
+  font-size: 8em;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.9, 0, 0.1, 1), transform 0.8s ease;
+}
+
+.experience h1.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.placeholder-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.9, 0, 0.1, 1), transform 1s ease;
+}
+
+.placeholder-list.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.placeholder-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2em;
+  padding: 1.4em 1em;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  color: var(--fg);
+  background-color: var(--bg);
+  overflow: hidden;
+  transition: color 0.25s ease;
+  cursor: default;
+}
+
+.placeholder-item:last-child {
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+
+.placeholder-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(255, 72, 0);
+  z-index: 0;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.45s cubic-bezier(0.9, 0, 0.1, 1);
+}
+
+.placeholder-item:hover::before {
+  transform: scaleY(1);
+}
+
+.placeholder-item:hover {
+  color: var(--bg);
+}
+
+.placeholder-meta,
+.placeholder-body {
+  position: relative;
+  z-index: 1;
+}
+
+.placeholder-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+.placeholder-index {
+  font-size: 0.75em;
+  opacity: 0.6;
+}
+
+.placeholder-body h2 {
+  font-size: 1.6em;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.placeholder-body h3 {
+  font-size: 1em;
+  font-weight: 500;
+  opacity: 0.75;
+  margin-top: 0.2em;
+}
+
+.placeholder-body p {
+  margin-top: 0.6em;
+  font-size: 0.95em;
+  line-height: 1.5;
+  max-width: 60ch;
 }
 
 .img-container {

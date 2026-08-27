@@ -18,7 +18,7 @@ const Work = () => {
           setTimeout(() => {
             work.classList.add("visible");
             table.classList.add("visible");
-          }, 1350); 
+          }, 1350);
         }
       }, []);
 
@@ -49,6 +49,111 @@ const Work = () => {
             onTransitionReady: triggerPageTransition,
         });
     };
+
+    // Academic GitHub projects
+    const projects = [
+        {
+            url: "https://github.com/gurshh-rain/Modelling-LSTM-Random-Forest-and-XGBoost-to-Forecast-RUL-Metrics-of-NASA-Turbofan-Jet-Engines",
+            title: "Predictive Maintenance of Turbofan Jet Engines via Ensemble Sequence Modelling",
+            desc: "Comparative study of LSTM, Random Forest, and XGBoost ensembles for Remaining Useful Life prediction on the NASA C-MAPSS benchmark dataset."
+        },
+        {
+            url: "https://github.com/gurshh-rain/Multi-Temporal-Land-Cover-Classification-and-Deforestation-Detection-via-Convolutional-Neural-Networ",
+            title: "Multi-Temporal Land-Cover Classification and Deforestation Detection via Convolutional Neural Networks",
+            desc: "CNN-based classification of EuroSAT satellite imagery with temporal change detection to automatically flag forest-to-non-forest conversion across two time points."
+        },
+        {
+            url: "https://github.com/gurshh-rain/Gradient-Based-Auto-Tuning-of-PID-Controller-Gains-via-Numerical-Optimization",
+            title: "Gradient-Based Auto-Tuning of PID Controller Gains via Numerical Optimization",
+            desc: "Implementation of a PID controller from scratch with automated gain tuning using gradient descent and numerically estimated gradients, optimizing a loss that balances tracking error and overshoot."
+        },
+        {
+            url: "https://github.com/gurshh-rain/Predicting-Neuro-iEEG-Data-Comparing-XGBoost-And-Transformer-Architectures-",
+            title: "Neural Signal Prediction from Intracranial EEG: A Comparative Study of XGBoost and Transformer Architectures",
+            desc: "Benchmarking gradient-boosted trees against Transformer-based sequence models for forecasting intracranial electrophysiological signals in neuroscience."
+        },
+        {
+            url: "https://github.com/gurshh-rain/Brain-Functional-Connectivity-During-AI-Assisted-Essay-Writing",
+            title: "Functional Connectivity Analysis of EEG During AI-Assisted Composition",
+            desc: "Investigates how student brain functional connectivity shifts when writing essays with generative-AI assistance, leveraging open EEG datasets and signal processing methods."
+        },
+        {
+            url: "https://github.com/gurshh-rain/ML-Framework-Cardiovascular-Risk-Assessment-Comparing-Logitic-Regression-Random-Forest-XGBoost",
+            title: "A Machine Learning Framework for Cardiovascular Risk Assessment Across Logistic Regression, Random Forest, and XGBoost",
+            desc: "End-to-end pipeline for clinical cardiovascular risk prediction comparing three model families on standard feature pipelines and evaluation metrics."
+        },
+        {
+            url: "https://github.com/gurshh-rain/Diabetes-Disease-Progression-Prediction-with-Gradient-Boosting",
+            title: "Modelling Diabetes Disease Progression with Gradient Boosting Regressors",
+            desc: "Predicts quantitative diabetes progression using gradient-boosted regression, with feature analysis and hyperparameter tuning for clinical interpretability."
+        },
+        {
+            url: "https://github.com/gurshh-rain/Time-Series-Forecasting-of-Household-Power-Usage",
+            title: "Time-Series Forecasting of Residential Energy Consumption Using Tuned XGBoost Models",
+            desc: "Forecasts household electricity demand from historical time-series data using feature-engineered, hyperparameter-optimized XGBoost regression."
+        },
+        {
+            url: "https://github.com/gurshh-rain/tribe-v2-interactive-brain-viewer-with-user-engagement-tracking",
+            title: "Interactive 3D Visualization of Meta's TRIBE v2 Brain Model with Engagement Analytics",
+            desc: "An interactive viewer for Meta's TRIBE v2 foundation brain model, augmented with user-engagement tracking to study how humans explore neural representations."
+        },
+        {
+            url: "https://github.com/gurshh-rain/Sign-Language-Model-V2-CNN",
+            title: "A Convolutional Neural Network for American Sign Language Alphabet Classification",
+            desc: "PyTorch CNN trained to classify static ASL alphabet images, exploring architectural trade-offs and data augmentation for robust sign recognition."
+        },
+        {
+            url: "https://github.com/gurshh-rain/Semantic-Book-Recommendations-from-Reading-History",
+            title: "Semantic Book Recommendations from Reading History via Sentence Embeddings",
+            desc: "Content-based recommender that maps books to embedding space using the Google Books API and sentence-transformer models to suggest semantically similar titles."
+        },
+        {
+            url: "https://github.com/gurshh-rain/ML-Algorithms-Python-Implementation",
+            title: "Foundational Machine Learning Algorithms Implemented from Scratch in Python",
+            desc: "A pedagogical library of classical ML algorithms implemented line-by-line in NumPy, with documented derivations of their underlying mathematics."
+        },
+        {
+            url: "https://github.com/gurshh-rain/agentic-research-search",
+            title: "A Multi-Agent Research Pipeline for Claim Clustering and Contradiction Detection",
+            desc: "Agentic system that goes beyond single-source fact-checking by clustering claims across documents and explicitly surfacing inter-source contradictions."
+        },
+        {
+            url: "https://github.com/gurshh-rain/autonomous-maze-navigation-slam-nav2",
+            title: "Autonomous Maze Navigation for a LiDAR-Equipped ROS 2 Robot using SLAM and Nav2",
+            desc: "Real-time mapping and path planning for a LiDAR-equipped differential robot in ROS 2, visualized live in RViz2 with simultaneous localization and mapping."
+        },
+        {
+            url: "https://github.com/gurshh-rain/6dof-robotic-arm-simulation-yolo-integration",
+            title: "Vision-Guided 6-DOF Robotic Arm Simulation with YOLO Object Detection in Gazebo",
+            desc: "Simulation of a six-degree-of-freedom robotic arm integrated with a YOLOv8 perception pipeline for pick-and-place tasks in the Gazebo physics engine."
+        },
+        {
+            url: "https://github.com/gurshh-rain/ros2-fleet-manager",
+            title: "A ROS 2 Fleet Management Framework for Multi-Robot Warehouse Coordination",
+            desc: "Software framework for orchestrating teams of ROS 2 mobile robots, handling task allocation, navigation coordination, and inter-robot communication."
+        },
+        {
+            url: "https://github.com/gurshh-rain/assembly-line-real-time-fastener-monitoring",
+            title: "Real-Time Fastener State Monitoring on an Assembly Line using YOLOv8 and ByteTrack",
+            desc: "Computer vision pipeline that detects and tracks fasteners on a live assembly line using YOLOv8 object detection combined with ByteTrack multi-object tracking."
+        },
+        {
+            url: "https://github.com/gurshh-rain/realtime-sign-language-interpreter",
+            title: "Real-Time Sign Language Interpretation from Webcam Video",
+            desc: "Translates sign language gestures captured from a webcam into text in real time using a custom computer vision and classification pipeline."
+        },
+        {
+            url: "https://github.com/gurshh-rain/gesture-controlled-computer",
+            title: "Markerless Hand-Gesture Control of a Personal Computer using MediaPipe and OpenCV",
+            desc: "Enables cursor control and system shortcuts through natural hand gestures tracked via MediaPipe hands and processed with OpenCV."
+        },
+        {
+            url: "https://github.com/gurshh-rain/computer-vision-virtual-paint",
+            title: "Air-Gesture Virtual Painting with OpenCV and MediaPipe Hand Tracking",
+            desc: "An air-drawing application that lets users paint on a digital canvas using finger gestures captured through a standard webcam."
+        }
+    ];
+
     return (
         <>
             <div className="revealer"></div>
@@ -68,204 +173,27 @@ const Work = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr
-                        className="tg"
-                        >
-                        <td>N°001</td>
-                        <td><HoverScrollText>GURSHAAN GILL PORTFOLIO</HoverScrollText></td>
-                        <td>2025</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={handleNavigation("/3D-Rendering")}
-                        >
-                        <td>N°002</td>
-                        <td><HoverScrollText>3D RENDERING</HoverScrollText></td>
-                        <td>2015-CURRENT</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://firstopz.ca"}
-                        >
-                        <td>N°003</td>
-                        <td><HoverScrollText>FIRSTOPZ</HoverScrollText></td>
-                        <td>2025-CURRENT</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://dylanngo.vercel.app"}
-                        >
-                        <td>N°004</td>
-                        <td><HoverScrollText>DYLAN NGO PORTFOLIO</HoverScrollText></td>
-                        <td>2025</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={handleNavigation("/robotic-arm")}
-                        >
-                        <td>N°005</td>
-                        <td><HoverScrollText>SURGICAL ARM</HoverScrollText></td>
-                        <td>2026-CURRENT</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/Modelling-LSTM-Random-Forest-and-XGBoost-to-Forecast-RUL-Metrics-of-NASA-Turbofan-Jet-Engines"}
-                        >
-                        <td>N°006</td>
-                        <td><HoverScrollText>MODELLING LSTM RANDOM FOREST AND XGBOOST TO FORECAST RUL METRICS OF NASA TURBOFAN JET ENGINES</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/Multi-Temporal-Land-Cover-Classification-and-Deforestation-Detection-via-Convolutional-Neural-Networ"}
-                        >
-                        <td>N°007</td>
-                        <td><HoverScrollText>MULTI TEMPORAL LAND COVER CLASSIFICATION AND DEFORESTATION DETECTION VIA CONVOLUTIONAL NEURAL NETWOR</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/tribe-v2-interactive-brain-viewer-with-user-engagement-tracking"}
-                        >
-                        <td>N°008</td>
-                        <td><HoverScrollText>TRIBE V2 INTERACTIVE BRAIN VIEWER WITH USER ENGAGEMENT TRACKING</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/gesture-controlled-computer"}
-                        >
-                        <td>N°009</td>
-                        <td><HoverScrollText>GESTURE CONTROLLED COMPUTER</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/computer-vision-virtual-paint"}
-                        >
-                        <td>N°010</td>
-                        <td><HoverScrollText>COMPUTER VISION VIRTUAL PAINT</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/realtime-sign-language-interpreter"}
-                        >
-                        <td>N°011</td>
-                        <td><HoverScrollText>REALTIME SIGN LANGUAGE INTERPRETER</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/Gradient-Based-Auto-Tuning-of-PID-Controller-Gains-via-Numerical-Optimization"}
-                        >
-                        <td>N°012</td>
-                        <td><HoverScrollText>GRADIENT BASED AUTO TUNING OF PID CONTROLLER GAINS VIA NUMERICAL OPTIMIZATION</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/ML-Algorithms-Python-Implementation"}
-                        >
-                        <td>N°013</td>
-                        <td><HoverScrollText>ML ALGORITHMS PYTHON IMPLEMENTATION</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/parking-lot-space-counter"}
-                        >
-                        <td>N°014</td>
-                        <td><HoverScrollText>PARKING LOT SPACE COUNTER</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={handleNavigation("/nvidia")}
-                        >
-                        <td>N°015</td>
-                        <td><HoverScrollText>NVIDIA 3090 PRODUCT RENDER</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/Diabetes-Disease-Progression-Prediction-with-Gradient-Boosting"}
-                        >
-                        <td>N°016</td>
-                        <td><HoverScrollText>DIABETES DISEASE PROGRESSION PREDICTION WITH GRADIENT BOOSTING</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://github.com/gurshh-rain/ML-Framework-Cardiovascular-Risk-Assessment-Comparing-Logitic-Regression-Random-Forest-XGBoost"}
-                        >
-                        <td>N°017</td>
-                        <td><HoverScrollText>ML FRAMEWORK CARDIOVASCULAR RISK ASSESSMENT COMPARING LOGITIC REGRESSION RANDOM FOREST XGBOOST</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        onClick={() => window.location.href="https://framelyai.vercel.app"}
-                        >
-                        <td>N°018</td>
-                        <td><HoverScrollText>FRAMELYAI</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        >
-                        <td>N°019</td>
-                        <td><HoverScrollText>QUADPOD ROBOT</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        >
-                        <td>N°020</td>
-                        <td><HoverScrollText>BIONIC HAND</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        >
-                        <td>N°021</td>
-                        <td><HoverScrollText>FOOTBALL HEATMAP GENERATOR</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
-
-                        <tr
-                        className="tg"
-                        >
-                        <td>N°022</td>
-                        <td><HoverScrollText>CUSTOM RAG PIPELINE</HoverScrollText></td>
-                        <td>2026</td>
-                        </tr>
+                        {projects.map((project, index) => (
+                            <tr
+                                key={index}
+                                className="tg"
+                                title={project.desc}
+                                onClick={() => window.location.href = project.url}
+                            >
+                                <td>{`N°${String(index + 1).padStart(3, "0")}`}</td>
+                                <td>
+                                    <HoverScrollText>{project.title.toUpperCase()}</HoverScrollText>
+                                    <span className="project-desc">{project.desc}</span>
+                                </td>
+                                <td>2026</td>
+                            </tr>
+                        ))}
                     </tbody>
                     </table>
                 </div>
 
             </div>
-            
+
         </>
     )
 }

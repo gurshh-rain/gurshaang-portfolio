@@ -19,6 +19,10 @@ export default function Home() {
         }, i * 50);
       });
       img.classList.add("visible");
+      const tagline = document.querySelector(".home .header .tagline");
+      if (tagline) {
+        setTimeout(() => tagline.classList.add("visible"), letters.length * 50 + 300);
+      }
     }
   }, [preloaderDone]); // fires exactly when preloader signals done
 
@@ -34,6 +38,7 @@ export default function Home() {
               </span>
             ))}
           </h1>
+          <p className="tagline">building w physical ai, computer vision, and agents</p>
         </div>
 
         <div className="hero-img">

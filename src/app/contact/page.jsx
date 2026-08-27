@@ -41,15 +41,8 @@ const Contact = () => {
 
                 </div>
                 <div className="col">
-                    <h2>Available for hire/freelance.</h2>
                     <div className="contact-copy">
-                        <h2>Collaborations / Freelance</h2>
                         <h2>gurshaan1124@gmail.com</h2>
-                    </div>
-                    <div className="contact-copy">
-                    <button onClick={() => setIsOpen(true)}>
-                        <HoverScrollText>Let's Collaborate!</HoverScrollText>
-                    </button>
                     </div>
                 </div>
                 <div className="contact-img">
@@ -130,11 +123,6 @@ const Contact = () => {
                     <div className="socials">
                         <Link href="https://www.instagram.com/gurshhhh_">
                             <HoverScrollText>instagram</HoverScrollText>
-                        </Link>
-                    </div>
-                    <div className="socials">
-                        <Link href="https://github.com/gurshh-rain?tab=repositories">
-                            <HoverScrollText>github</HoverScrollText>
                         </Link>
                     </div>
                     <div className="socials">

@@ -4,6 +4,7 @@ import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import HoverScrollText from "./HoverScrollText";
 import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
 import styles from './Nav.module.css';
 
 const Nav = () => {
@@ -58,6 +59,11 @@ const Nav = () => {
                         </Link>
                     </div>
                     <div className="nav-item">
+                        <Link href="/experience" onClick={handleNavigation("/experience")}>
+                            <HoverScrollText>experience</HoverScrollText>
+                        </Link>
+                    </div>
+                    <div className="nav-item">
                         <Link href="/contact" onClick={handleNavigation("/contact")}>
                             <HoverScrollText>contact</HoverScrollText>
                         </Link>
@@ -81,7 +87,8 @@ const Nav = () => {
                     </div>
                 </div>
                 <div className="nav-copy">
-                    <p>toronto, on</p>
+                    <p>toronto+waterloo, on</p>
+                    <ThemeToggle />
                 </div>
             </div>
         </div>
