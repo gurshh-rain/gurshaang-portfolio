@@ -38,7 +38,7 @@ export default function Home() {
               </span>
             ))}
           </h1>
-          <p className="tagline">building w physical ai, computer vision, and agents</p>
+          <p className="tagline">tron @ waterloo | building w physical ai, computer vision, and agents</p>
         </div>
 
         <div className="hero-img">
