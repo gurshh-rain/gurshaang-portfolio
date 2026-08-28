@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 // Which elements get the ripple. Add `data-ascii-ripple` to opt-in any element.
 const TARGET_SELECTOR = ".project-card, .placeholder-item, .contact-row, [data-ascii-ripple]";
 const CHARACTERS = "+*×·:.~^#%=<>/\\";
-const GAP = 10; // px between characters (denser grid)
+const GAP = 7; // px between characters (denser grid)
 const RIPPLE_FRAMES = 24; // frames for the ripple front to sweep center -> edge
 const FONT = '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace';
 
@@ -13,7 +13,7 @@ const FONT = '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace';
 // appear -> grows to maxSize with distance-based delay, then shimmers;
 // disappear -> shrinks back to 0.
 function createGlyph(x, y, delay) {
-  const maxSize = 8 + Math.random() * 4;
+  const maxSize = 5 + Math.random() * 2.5;
   return {
     x,
     y,
@@ -21,7 +21,7 @@ function createGlyph(x, y, delay) {
     size: 0,
     maxSize,
     minSize: maxSize * 0.5,
-    growStep: 1.6 + Math.random() * 1,
+    growStep: 1 + Math.random() * 0.7,
     shimmerSpeed: 0.02 + Math.random() * 0.05,
     delay,
     // per-glyph random offsets so neither the appear ripple nor the
@@ -74,7 +74,7 @@ function glyphDisappear(g) {
     g.isIdle = true;
     return;
   }
-  g.size -= 1.2;
+  g.size -= 0.8;
 }
 
 export default function AsciiRippleLayer() {
@@ -94,7 +94,7 @@ export default function AsciiRippleLayer() {
       const maxDistance = Math.hypot(cx, cy) || 1;
       // adapt the gap on very large cards so glyph count stays bounded
       const estimate = (state.width / GAP) * (state.height / GAP);
-      const gap = estimate > 1400 ? Math.ceil(Math.sqrt((state.width * state.height) / 1400)) : GAP;
+      const gap = estimate > 3000 ? Math.ceil(Math.sqrt((state.width * state.height) / 3000)) : GAP;
       // include the edges so the ripple covers the full card
       for (let x = 0; x <= state.width; x += gap) {
         for (let y = 0; y <= state.height; y += gap) {
