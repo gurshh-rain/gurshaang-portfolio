@@ -2,6 +2,7 @@
 import { useRevealer } from "../hooks/useRevealer";
 import { useEffect } from "react";
 import HoverScrollText from "../components/HoverScrollText";
+import GooeyTextReveal from "../components/GooeyTextReveal";
 
 
 const Experience = () => {
@@ -18,31 +19,40 @@ const Experience = () => {
         }
     }, []);
 
-    // Placeholder experience entries — to be replaced with real ones
     const experiences = [
         {
-            role: "Mechatronics Engineering Student",
-            org: "University of Waterloo",
-            period: "Sep 2026 – Apr 2031",
-            desc: "Placeholder for upcoming undergraduate studies in Mechatronics Engineering. Coursework, design teams, and research interests to be detailed."
+            role: "Co-founder / CTO / Growth",
+            org: "Phydata [On-site/Remote] | Agentic AI, Git/GitHub",
+            period: "July 2026 – Present",
+            desc: [
+                "Building and shipping Phydata with a team of five from Waterloo/MIT, creating the next generation of tactile data for physical AI.",
+                "Designed and shipped end-to-end agentic AI workflows that autonomously curate, format, and programmatically publish targeted content on X, eliminating manual overhead and optimizing social media reach."
+            ]
         },
         {
-            role: "Personal Project — Robotics & AI",
-            org: "Independent",
-            period: "2024 – Present",
-            desc: "Placeholder for self-directed work spanning ROS 2 robotics, computer vision, and agentic AI systems. See the projects page for the current list of builds."
+            role: "ML / Computer Vision Contributor",
+            org: "Roboflow [Remote] | Computer vision, Data augmentation, VLMs",
+            period: "May 2026 – Present",
+            desc: [
+                "Built and deployed end-to-end computer vision projects spanning object detection, image classification, and robotics.",
+                "Designed data pipelines covering dataset collection, annotation, augmentation, and evaluation for production-ready models.",
+                "Explored zero-shot labeling, vision-language models (VLMs), and automated dataset-generation techniques."
+            ]
         },
         {
-            role: "Placeholder Role",
-            org: "Placeholder Organization",
-            period: "Month Year – Month Year",
-            desc: "Placeholder entry — replace with a real co-op, internship, research position, or club role. Include scope, tools used, and outcomes."
+            role: "Frontend Developer",
+            org: "FirstOpz [Remote] | TypeScript, Web Development",
+            period: "Feb 2026 – June 2026",
+            desc: [
+                "Built and shipped FirstOpz’s public waitlist landing page from scratch, translating the platform’s resume-free, skills-based value proposition into a clear, conversion-focused signup flow for its Wave 1 launch.",
+                "Implemented responsive, mobile-first layouts with real-time form validation in HTML, CSS, and TypeScript/React, growing the early-access list to 100+ student sign-ups in one month."
+            ]
         },
         {
-            role: "Placeholder Role",
-            org: "Placeholder Organization",
-            period: "Month Year – Month Year",
-            desc: "Placeholder entry — replace with a real co-op, internship, research position, or club role. Include scope, tools used, and outcomes."
+            role: "Incoming",
+            org: "Watanomous",
+            period: "Incoming",
+            desc: []
         }
     ];
 
@@ -50,27 +60,71 @@ const Experience = () => {
         <>
             <div className="revealer"></div>
             <div className="experience">
-                <h1>experience.</h1>
+                <GooeyTextReveal>
+                    <h1>experience.</h1>
+                </GooeyTextReveal>
                 <hr></hr>
-                <ul className="placeholder-list">
-                    {experiences.map((item, index) => (
-                        <li key={index} className="placeholder-item">
-                            <div className="placeholder-meta">
-                                <span className="placeholder-period">{item.period}</span>
-                                <span className="placeholder-index">
-                                    {`N°${String(index + 1).padStart(3, "0")}`}
-                                </span>
-                            </div>
-                            <div className="placeholder-body">
-                                <h2>
-                                    <HoverScrollText>{item.role.toUpperCase()}</HoverScrollText>
-                                </h2>
-                                <h3>{item.org}</h3>
-                                <p>{item.desc}</p>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                        .experience-grid {
+                            display: grid;
+                            grid-template-columns: 1fr 520px;
+                            gap: 2em;
+                            width: 100%;
+                        }
+                        @media (max-width: 1000px) {
+                            .experience-grid {
+                                grid-template-columns: 1fr;
+                            }
+                            .experience-img-wrap {
+                                display: none;
+                            }
+                        }
+                        .experience-img-wrap {
+                            height: 100%;
+                        }
+                        .experience-img-wrap img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: top;
+                        }
+                    `
+                }} />
+                <div className="experience-grid">
+                    <ul className="placeholder-list">
+                        {experiences.map((item, index) => (
+                            <li key={index} className="placeholder-item">
+                                <div className="placeholder-meta">
+                                    <span className="placeholder-period">{item.period}</span>
+                                    <span className="placeholder-index">
+                                        {`N°${String(index + 1).padStart(3, "0")}`}
+                                    </span>
+                                </div>
+                                <div className="placeholder-body">
+                                    <h2>
+                                        <HoverScrollText>{item.role.toUpperCase()}</HoverScrollText>
+                                    </h2>
+                                    <GooeyTextReveal mode="scroll" start="top 85%" delay={0.05}>
+                                        <h3>{item.org}</h3>
+                                        {Array.isArray(item.desc) && item.desc.length > 0 ? (
+                                            <ul className="experience-bullets">
+                                                {item.desc.map((point, i) => (
+                                                    <li key={i}>{point}</li>
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                            !Array.isArray(item.desc) && item.desc && <p>{item.desc}</p>
+                                        )}
+                                    </GooeyTextReveal>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="experience-img-wrap">
+                        <img src="hero2.png" alt="" />
+                    </div>
+                </div>
             </div>
         </>
     );

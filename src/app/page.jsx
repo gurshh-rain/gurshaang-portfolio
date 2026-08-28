@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { usePreloaderDone } from "./components/PreloaderContext";
+import GooeyTextReveal from "./components/GooeyTextReveal";
 
 export default function Home() {
   const preloaderDone = usePreloaderDone();
@@ -38,11 +39,13 @@ export default function Home() {
               </span>
             ))}
           </h1>
-          <p className="tagline">tron @ waterloo | building w physical ai, computer vision, and agents</p>
+          <GooeyTextReveal delay={0.5}>
+            <p className="tagline">tron @ waterloo | building w physical ai, computer vision, and agents</p>
+          </GooeyTextReveal>
         </div>
 
         <div className="hero-img">
-          <img src="/hero.jpg" alt="hero-img" />
+          <img src="/hero.png?v=2" alt="hero-img" />
         </div>
       </div>
     </>

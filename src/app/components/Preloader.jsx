@@ -102,8 +102,6 @@ export default function Preloader({ onComplete }) {
   const readyRef = useRef(null);
   const enterRef = useRef(null);
   const authRef = useRef(null);
-  const wipeRef = useRef(null);
-  const wipeBarRef = useRef(null);
   const innerWindowRef = useRef(null);
   const frameMetaRef = useRef(null);
 
@@ -297,41 +295,113 @@ export default function Preloader({ onComplete }) {
     );
 
     tl.add(() => {
-      gsap.set(wipeBarRef.current, { opacity: 1 });
-      gsap.set(wipeRef.current, { scaleX: 0, transformOrigin: "left center" });
-
+      // ASCII beach wave: same grow/shimmer/shrink glyphs as the card
+      // ripple, sweeping from the bottom-left corner to the top-right.
       const container = innerWindowRef.current;
-      const totalW = container.offsetWidth + 30;
-      const wipeDur = 820;
-      let startTs = null;
+      if (!container) return;
 
-      const step = (ts) => {
-        if (!startTs) startTs = ts;
-        const t = Math.min((ts - startTs) / wipeDur, 1);
-        const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-        const x = ease * totalW;
+      const WAVE_CHARS = "+*×·:.~^#%=<>/\\";
+      const WAVE_FONT = '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace';
+      const SWEEP_FRAMES = 60; // frames for the front to cross the screen
+      const HOLD_FRAMES = 26; // how long each glyph lingers before receding
 
-        const vel = Math.min(t * 2, 1) * (1 - Math.max(0, (t - 0.55) / 0.45));
-        const barW = 14 + vel * 6;
-        const shadowAlpha = 0.10 + vel * 0.08;
+      const width = container.offsetWidth;
+      const height = container.offsetHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-        if (wipeBarRef.current) {
-          wipeBarRef.current.style.left = x - barW + "px";
-          wipeBarRef.current.style.width = barW + "px";
-          wipeBarRef.current.style.boxShadow = `-${barW * 1.4}px 0 ${barW * 2}px 1px rgba(255,255,255,${shadowAlpha})`;
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.cssText =
+        "position:absolute;inset:0;width:100%;height:100%;z-index:10;pointer-events:none;";
+      container.appendChild(canvas);
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // adaptive gap so glyph count stays bounded on any screen
+      const gap = Math.max(9, Math.ceil(Math.sqrt((width * height) / 6000)));
+      const maxDistance = Math.hypot(width, height) || 1;
+      const glyphs = [];
+      for (let x = 0; x <= width; x += gap) {
+        for (let y = 0; y <= height; y += gap) {
+          // distance from the bottom-left corner drives the wave front
+          const dist = Math.hypot(x, height - y) / maxDistance;
+          const maxSize = 9 + Math.random() * 5;
+          glyphs.push({
+            x,
+            y,
+            char: WAVE_CHARS[Math.floor(Math.random() * WAVE_CHARS.length)],
+            size: 0,
+            maxSize,
+            minSize: maxSize * 0.5,
+            growStep: 1.6 + Math.random() * 1,
+            shimmerSpeed: 0.02 + Math.random() * 0.05,
+            delay: dist * SWEEP_FRAMES + Math.random() * 14,
+            hold: HOLD_FRAMES + Math.random() * 14,
+            isReverse: false,
+            isShimmer: false,
+            alpha: 0.35 + Math.random() * 0.45,
+          });
+        }
+      }
+
+      let frameCount = 0;
+      const step = () => {
+        frameCount += 1;
+        ctx.clearRect(0, 0, width, height);
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "#fff";
+
+        let alive = false;
+        const buckets = new Map();
+
+        for (const g of glyphs) {
+          const local = frameCount - g.delay;
+          if (local < 0) {
+            alive = true;
+            continue;
+          }
+          if (local <= g.hold) {
+            // wave front: grow, then shimmer while it holds
+            if (g.size >= g.maxSize) g.isShimmer = true;
+            if (g.isShimmer) {
+              if (g.size >= g.maxSize) g.isReverse = true;
+              else if (g.size <= g.minSize) g.isReverse = false;
+              g.size += g.isReverse ? -g.shimmerSpeed * 10 : g.shimmerSpeed * 10;
+            } else {
+              g.size += g.growStep;
+            }
+            alive = true;
+          } else if (g.size > 0) {
+            // wave passed: recede
+            g.size -= 1.2;
+            alive = true;
+          }
+
+          if (g.size <= 0.1) continue;
+          const size = Math.round(g.size);
+          let bucket = buckets.get(size);
+          if (!bucket) {
+            bucket = [];
+            buckets.set(size, bucket);
+          }
+          bucket.push(g);
         }
 
-        if (wipeRef.current) {
-          wipeRef.current.style.transform = `scaleX(${Math.min(ease, 1)})`;
-        }
+        buckets.forEach((bucket, size) => {
+          ctx.font = `${size}px ${WAVE_FONT}`;
+          for (const g of bucket) {
+            ctx.globalAlpha = g.alpha * Math.min(1, g.size / g.maxSize);
+            ctx.fillText(g.char, g.x, g.y);
+          }
+        });
+        ctx.globalAlpha = 1;
 
-        if (t < 1) {
+        if (alive) {
           requestAnimationFrame(step);
         } else {
-          if (wipeBarRef.current) {
-            wipeBarRef.current.style.transition = "opacity 0.15s ease";
-            wipeBarRef.current.style.opacity = "0";
-          }
+          canvas.remove();
         }
       };
 
@@ -456,18 +526,6 @@ export default function Preloader({ onComplete }) {
         ref={innerWindowRef}
         style={{ position: "absolute", inset: 0, margin: 0, background: "#0a0a0a", overflow: "hidden", zIndex: 3 }}
       >
-        {/* Eraser */}
-        <div
-          ref={wipeRef}
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", background: "#0a0a0a", zIndex: 9, opacity: 1, transform: "scaleX(0)", transformOrigin: "left center" }}
-        />
-
-        {/* Velocity wipe bar */}
-        <div
-          ref={wipeBarRef}
-          style={{ position: "absolute", top: 0, left: "-80px", width: "14px", height: "100%", background: "#ffffff", zIndex: 10, opacity: 0 }}
-        />
-
         {/* READY */}
         <div ref={readyRef} style={{ position: "absolute", top: "2rem", left: "2rem", fontFamily: '"Helvetica", sans-serif', fontSize: "17px", fontWeight: 600, letterSpacing: "-0.04rem", color: "#fff", opacity: 0 }}>
           READY

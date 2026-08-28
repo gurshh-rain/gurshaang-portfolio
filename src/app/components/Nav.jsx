@@ -86,7 +86,7 @@ const Nav = () => {
                         </Link>
                     </div>
                     <div className="nav-item">
-                        <Link href="https://github.com/gurshh-rain">
+                        <Link href="/resume" onClick={handleNavigation("/resume")}>
                             <HoverScrollText>resume</HoverScrollText>
                         </Link>
                     </div>
