@@ -115,14 +115,8 @@ a, p {
   border-bottom: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
 }
 
-.nav-item:hover {
-  text-decoration-line: underline;
-}
 .nav .col:nth-child(1) {
   flex: 1;
-}
-.nav-logo:hover {
-  text-decoration-line: underline;
 }
 .nav .col:nth-child(2) {
   flex: 2;
@@ -563,6 +557,7 @@ span {
   line-height: 1.25;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -573,6 +568,7 @@ span {
   opacity: 0.75;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   transition: opacity 0.25s ease;
@@ -721,44 +717,6 @@ span {
 
 .img-container img:hover {
   filter: grayscale();
-}
-
-.hover-wave {
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
-  height: 1.3em;
-  line-height: 1.3em;
-  vertical-align: middle;
-}
-
-.hover-wave-inner {
-  display: flex;
-  flex-direction: column;
-  height: 200%;
-  transform: translateY(0%);
-  transition: transform 0.3s cubic-bezier(0.9, 0, 0.1, 1);
-}
-
-.hover-wave-line {
-  display: flex;
-  height: 50%;
-}
-
-.hover-wave-char {
-  font-family: "Sansation", sans-serif;
-  font-style: normal;
-  display: inline-block;
-  transform: translateY(0);
-  transition: transform 0.3s cubic-bezier(0.9, 0, 0.1, 1);
-}
-
-.hover-wave:hover .hover-wave-inner {
-  transform: translateY(-2%);
-}
-
-.hover-wave:hover .hover-wave-char {
-  transform: translateY(-100%);
 }
 
 .container {

@@ -2,7 +2,7 @@
 import Link from "next/link"
 import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
-import HoverScrollText from "./HoverScrollText";
+import AsciiGlitchRipple from "./AsciiGlitchRipple";
 import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 import styles from './Nav.module.css';
@@ -42,7 +42,7 @@ const Nav = () => {
             <div className="col">
                 <div className="nav-logo">
                     <Link href="/">
-                        <HoverScrollText>gurshaan gill</HoverScrollText>
+                        <AsciiGlitchRipple as="span">gurshaan gill</AsciiGlitchRipple>
                     </Link>
                 </div>
             </div>
@@ -50,44 +50,44 @@ const Nav = () => {
                 <div className="nav-items">
                     <div className="nav-item">
                         <Link href="/work" onClick={handleNavigation("/work")}>
-                            <HoverScrollText>projects</HoverScrollText>
+                            <AsciiGlitchRipple as="span">projects</AsciiGlitchRipple>
                         </Link>
                     </div>
                     <div className="nav-item">
                         <Link href="/about" onClick={handleNavigation("/about")}>
-                            <HoverScrollText>about</HoverScrollText>
+                            <AsciiGlitchRipple as="span">about</AsciiGlitchRipple>
                         </Link>
                     </div>
                     <div className="nav-item">
                         <Link href="/experience" onClick={handleNavigation("/experience")}>
-                            <HoverScrollText>experience</HoverScrollText>
+                            <AsciiGlitchRipple as="span">experience</AsciiGlitchRipple>
                         </Link>
                     </div>
                     <div className="nav-item">
                         <Link href="/contact" onClick={handleNavigation("/contact")}>
-                            <HoverScrollText>contact</HoverScrollText>
+                            <AsciiGlitchRipple as="span">contact</AsciiGlitchRipple>
                         </Link>
                     </div>
                 </div>
                 <div className="nav-copy">
                     <div className="nav-item">
                         <Link href="https://www.linkedin.com/in/gurshaan-gill-5b48603a4/">
-                            <HoverScrollText>linkedin</HoverScrollText>
+                            <AsciiGlitchRipple as="span">linkedin</AsciiGlitchRipple>
                         </Link>
                     </div>
                     <div className="nav-item">
                         <Link href="https://github.com/gurshh-rain">
-                            <HoverScrollText>github</HoverScrollText>
+                            <AsciiGlitchRipple as="span">github</AsciiGlitchRipple>
                         </Link>
                     </div>
                     <div className="nav-item">
                         <Link href="https://www.instagram.com/gurshhhh_">
-                            <HoverScrollText>instagram</HoverScrollText>
+                            <AsciiGlitchRipple as="span">instagram</AsciiGlitchRipple>
                         </Link>
                     </div>
                     <div className="nav-item">
                         <Link href="/resume" onClick={handleNavigation("/resume")}>
-                            <HoverScrollText>resume</HoverScrollText>
+                            <AsciiGlitchRipple as="span">resume</AsciiGlitchRipple>
                         </Link>
                     </div>
                 </div>

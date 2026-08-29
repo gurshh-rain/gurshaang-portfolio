@@ -2,7 +2,7 @@
 
 import { useRevealer } from "../hooks/useRevealer";
 import { useEffect } from "react";
-import HoverScrollText from "../components/HoverScrollText";
+import AsciiGlitchRipple from "../components/AsciiGlitchRipple";
 import GooeyTextReveal from "../components/GooeyTextReveal";
 
 const contactLinks = [
@@ -130,7 +130,7 @@ export default function Contact() {
                   <span className="contact-index">{index}</span>
                   <div className="contact-body">
                     <h2>
-                      <HoverScrollText>{link.label.toUpperCase()}</HoverScrollText>
+                      <AsciiGlitchRipple as="span">{link.label.toUpperCase()}</AsciiGlitchRipple>
                     </h2>
                     <span>{link.value}</span>
                   </div>

@@ -1,7 +1,7 @@
 "use client";
 import { useRevealer } from "../hooks/useRevealer";
 import { useEffect } from "react";
-import HoverScrollText from "../components/HoverScrollText";
+import AsciiGlitchRipple from "../components/AsciiGlitchRipple";
 import GooeyTextReveal from "../components/GooeyTextReveal";
 
 
@@ -103,7 +103,7 @@ const Experience = () => {
                                 </div>
                                 <div className="placeholder-body">
                                     <h2>
-                                        <HoverScrollText>{item.role.toUpperCase()}</HoverScrollText>
+                                        <AsciiGlitchRipple as="span">{item.role.toUpperCase()}</AsciiGlitchRipple>
                                     </h2>
                                     <GooeyTextReveal mode="scroll" start="top 85%" delay={0.05}>
                                         <h3>{item.org}</h3>
