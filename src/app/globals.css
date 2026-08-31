@@ -10,7 +10,7 @@
   --bg: #0a0a0a;
 }
 
-/* Light theme — toggled by setting data-theme="light" on <html>.
+/* Light theme. Toggle it by setting data-theme="light" on <html>.
    Dark is the default (no attribute). */
 :root[data-theme="light"] {
   --fg: #0a0a0a;
@@ -124,7 +124,7 @@ a, p {
   justify-content: space-between;
 }
 
-/* Theme toggle — bare icon, no chrome. Rendered as a div, so there are
+/* Theme toggle. Bare icon, no chrome. Rendered as a div, so there are
    no user-agent button styles to defeat. */
 .theme-toggle {
   display: inline-flex;
@@ -189,7 +189,7 @@ a, p {
   font-family: Helvetica, Arial, sans-serif;
   font-size: clamp(0.75rem, 1.1vw, 1rem);
   font-weight: 300;
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  color: color-mix(in srgb, var(--fg) 72%, transparent);
   letter-spacing: 0.02em;
   text-transform: lowercase;
   opacity: 1;

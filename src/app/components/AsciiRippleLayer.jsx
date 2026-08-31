@@ -139,7 +139,7 @@ export default function AsciiRippleLayer() {
 
       let allIdle = true;
 
-      // bucket glyphs by integer font size — setting ctx.font is the
+      // bucket glyphs by integer font size; setting ctx.font is the
       // most expensive canvas state change, so do it once per size
       const buckets = new Map();
       for (const g of glyphs) {

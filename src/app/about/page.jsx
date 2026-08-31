@@ -32,14 +32,14 @@ const Studio = () => {
                     <GooeyTextReveal mode="scroll" start="top 85%" delay={0.05}>
                         <div className={styles.brief}>
                             <p>
-                                Hey there. I&apos;m Gurshaan Gill — a Mechatronics
+                                Hey there. I&apos;m Gurshaan Gill, a Mechatronics
                                 Engineering student at the <span>University of
                                 Waterloo</span> (Tron &apos;31), splitting time between{" "}
                                 <span>Toronto</span> and <span>Waterloo</span>.
                             </p>
                             <p>
                                 I build things that move, think, and work in the real
-                                world — spanning <span>robotics</span>,{" "}
+                                world, spanning <span>robotics</span>,{" "}
                                 <span>controls</span>, <span>computer vision</span>, and{" "}
                                 <span>agentic AI</span>. My work ranges from ROS 2
                                 fleets and LiDAR-based SLAM to EEG neuroscience and
@@ -86,7 +86,7 @@ const Studio = () => {
                                 <Link href="/work" className={styles.inlineLink}>
                                     work page
                                 </Link>{" "}
-                                — from ROS 2 fleet coordination and YOLO perception
+                                from ROS 2 fleet coordination and YOLO perception
                                 pipelines to EEG analysis and 3D experiments.
                             </p>
                         </div>
@@ -111,9 +111,9 @@ const Studio = () => {
                                 it in a library.
                             </p>
                             <p>
-                                I work across the stack — from embedded ROS nodes and
+                                I work across the stack, from embedded ROS nodes and
                                 Gazebo simulations to Next.js frontends and agentic
-                                pipelines — because the best ideas usually come from
+                                pipelines, because the best ideas usually come from
                                 seeing the full picture.
                             </p>
                         </div>
@@ -132,7 +132,7 @@ const Studio = () => {
                         <div className={styles.sectionBody}>
                             <div className={styles.educationItem}>
                                 <h3>BASc, Mechatronics Engineering</h3>
-                                <p>University of Waterloo — Tron &apos;31, expected 2031</p>
+                                <p>University of Waterloo, Tron &apos;31, expected 2031</p>
                             </div>
                         </div>
                     </GooeyTextReveal>
@@ -141,7 +141,7 @@ const Studio = () => {
                 <section className={styles.skillsBlock}>
                     <div className={styles.skillsHeader}>
                         <GooeyTextReveal mode="scroll" start="top 85%">
-                            <h2>05 — Skills</h2>
+                            <h2>05 Skills</h2>
                         </GooeyTextReveal>
                     </div>
                     <div className={styles.skillsGrid}>

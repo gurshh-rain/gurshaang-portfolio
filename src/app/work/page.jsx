@@ -87,7 +87,7 @@ const Work = () => {
             projects: [
                 {
                     url: "",
-                    title: "Quadpod Robot — Full Design, Build, and Training",
+                    title: "Quadpod Robot: Full Design, Build, and Training",
                     desc: "Designed and 3D-printed a custom quadruped chassis and leg assemblies from scratch, engineering synchronized multi-servo gait control that achieved stable standing and coordinated walking across all four legs. Implemented autonomous obstacle avoidance by streaming live ultrasonic distance readings into the robot’s control loop in real time, enabling collision-free navigation with zero manual input. Deployed C++ control loops powered by real-time IMU tilt correction and ultrasonic distance telemetry."
                 },
                 {
@@ -182,7 +182,7 @@ const Work = () => {
                 },
                 {
                     url: "",
-                    title: "Framelyai — Behavioral Interview Analyzer",
+                    title: "Framelyai: Behavioral Interview Analyzer",
                     desc: "Built a web platform that analyzes eye contact, posture, facial expressions, and filler-word usage in real time during mock behavioral interviews, combining computer-vision tracking with live speech transcription and LLM grading against the STAR framework."
                 },
                 {

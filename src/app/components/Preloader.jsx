@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import CustomEase from "gsap/CustomEase";
+import AngularTechMark from "./AngularTechMark";
 
 gsap.registerPlugin(CustomEase);
 CustomEase.create("hop", "0.9, 0, 0.1, 1");
@@ -14,7 +15,7 @@ const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%<>/\\[]{}~^*";
 const R_SOLID_REST = 95;
 // Dashed ring resting radius (bigger)
 const R_DASHED_REST = 118;
-// On hover: solid expands, dashed shrinks — they swap
+// On hover: solid expands, dashed shrinks; they swap
 const R_SOLID_HOVER = 118;
 const R_DASHED_HOVER = 95;
 
@@ -146,7 +147,7 @@ export default function Preloader({ onComplete }) {
       "-=0.2"
     );
 
-    // Track the progress SVG container so we can rotate it — the fill's
+    // Track the progress SVG container so we can rotate it. The fill's
     // starting point sits at the top of the un-rotated ring (12 o'clock after
     // the static -90deg SVG rotation). Rotating the whole group moves that
     // start point around the circle.
@@ -169,8 +170,8 @@ export default function Preloader({ onComplete }) {
         }
         // Drift the fill's start point downward over time: rotates from 0deg
         // (start at top) to ~120deg (start lower-right) by completion. Linear
-        // mapping so the start point is in motion from frame one — paired with
-        // the accelerating fill, the start point keeps pace with the drawing.
+        // mapping so the start point is in motion from frame one, paired with
+        // the accelerating fill, so the start point keeps pace with the drawing.
         if (progressGroup) {
           const drift = Math.min(counter.val / 100, 1);
           const driftAngle = drift * 120;
@@ -188,7 +189,7 @@ export default function Preloader({ onComplete }) {
     );
   }, []);
 
-  // Enter phase — shrink solid ring, show ENTER + dashed ring
+  // Enter phase. Shrink solid ring, show ENTER + dashed ring
   useEffect(() => {
     if (phase !== "enter") return;
     const tl = gsap.timeline();
@@ -233,7 +234,7 @@ export default function Preloader({ onComplete }) {
     const r = enter ? R_SOLID_HOVER : R_SOLID_REST;
 
     // Both solid rings use pathLength=1, so the dash math is decoupled from
-    // the actual circumference — the ring stays perfectly closed at any radius.
+    // the actual circumference; the ring stays perfectly closed at any radius.
     gsap.to(circleTrackRef.current, {
       attr: { r },
       duration: 0.4,
@@ -519,6 +520,33 @@ export default function Preloader({ onComplete }) {
             </>
           )}
         </div>
+
+        {/* Right-side angular system mark */}
+        <div
+          style={{
+            position: "absolute",
+            top: "8vh",
+            right: 0,
+            bottom: "8vh",
+            width: "8vw",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
+          }}
+        >
+          <div
+            style={{
+              width: "42vh",
+              height: "min(7.5vh, 6.5vw)",
+              flex: "0 0 auto",
+              transform: "rotate(90deg)",
+              transformOrigin: "center",
+            }}
+          >
+            <AngularTechMark color="#111" />
+          </div>
+        </div>
       </div>
 
       {/* Main black inner window */}
@@ -547,11 +575,11 @@ export default function Preloader({ onComplete }) {
           AUTHORIZED ACCESS
         </div>
 
-        {/* Circle + click zone — restricted to 260×260 hit area */}
+        {/* Circle + click zone, restricted to 260×260 hit area */}
         <div
           style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}
         >
-          {/* Hit area — only the circle zone is clickable */}
+          {/* Hit area. Only the circle zone is clickable */}
           <div
             style={{
               position: "relative",
@@ -598,7 +626,7 @@ export default function Preloader({ onComplete }) {
                 opacity="0"
               />
 
-              {/* Solid progress — wrapped in a group so we can rotate the
+              {/* Solid progress, wrapped in a group so we can rotate the
                   fill's starting point around the circle during loading. */}
               <g
                 style={{

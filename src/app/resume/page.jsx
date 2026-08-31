@@ -125,7 +125,7 @@ const Resume = () => {
             ]
         },
         {
-            title: "Quadpod Robot — Full Design, Build, and Training",
+            title: "Quadpod Robot: Full Design, Build, and Training",
             category: "Robotics",
             org: "CAD, 3D Printing, Arduino/C++, NVIDIA Isaac Sim",
             period: "",
@@ -278,7 +278,7 @@ const Resume = () => {
             ]
         },
         {
-            title: "Framelyai — Behavioral Interview Analyzer",
+            title: "Framelyai: Behavioral Interview Analyzer",
             category: "Agentic / Applied AI",
             org: "Python, Computer Vision, LLMs, REST APIs",
             period: "",
@@ -296,7 +296,7 @@ const Resume = () => {
             ]
         },
         {
-            title: "V6 Engine from Scratch — CAD Model",
+            title: "V6 Engine from Scratch: CAD Model",
             category: "CAD / Design",
             org: "SolidWorks / Fusion 360",
             period: "",
@@ -355,9 +355,38 @@ const Resume = () => {
                         opacity: 1 !important;
                         transform: none !important;
                     }
+                    .resume-top {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1.5em;
+                    }
+                    .resume-ascii-art {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 75%;
+                        width: auto;
+                        max-width: calc(50% - 0.5em);
+                        aspect-ratio: 1;
+                        transform: translateX(-50%);
+                        overflow: hidden;
+                        border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+                        background: #050505;
+                    }
+                    .resume-ascii-art img {
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        object-fit: cover;
+                        object-position: center 61%;
+                    }
                     @media (max-width: 900px) {
                         .resume .placeholder-list {
                             grid-template-columns: 1fr;
+                        }
+                        .resume-ascii-art {
+                            display: none;
                         }
                     }
                     .resume .placeholder-item {
@@ -456,6 +485,7 @@ const Resume = () => {
                 </GooeyTextReveal>
                 <hr></hr>
 
+                <div className="resume-top">
                 <div className="resume-header" style={headerStyle}>
                     <h2 style={{ fontSize: "2.2em", fontWeight: 700, lineHeight: 1.1 }}>
                         Gurshaan Gill
@@ -489,7 +519,7 @@ const Resume = () => {
                         <GooeyTextReveal mode="scroll" start="top 85%" delay={0.05}>
                             <div className="placeholder-body">
                                 <h2>University of Waterloo</h2>
-                                <h3>Bachelor of Applied Science — Mechatronics Engineering</h3>
+                                <h3>Bachelor of Applied Science in Mechatronics Engineering</h3>
                             </div>
                         </GooeyTextReveal>
                     </li>
@@ -524,6 +554,10 @@ const Resume = () => {
                     </GooeyTextReveal>
                     </li>
                 </ul>
+                <div className="resume-ascii-art">
+                    <img src="/ascii-art-3.png" alt="ASCII artwork of an industrial robotic arm" />
+                </div>
+                </div>
 
                 <GooeyTextReveal delay={0.05}>
                     <h2 style={sectionStyle}>experience.</h2>

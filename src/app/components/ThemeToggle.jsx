@@ -39,7 +39,7 @@ export default function ThemeToggle() {
       try {
         localStorage.setItem("theme", next);
       } catch {
-        // localStorage can throw in private modes — fail silently.
+        // localStorage can throw in private modes, so fail silently.
       }
       setTheme(next);
     };
@@ -86,7 +86,7 @@ export default function ThemeToggle() {
       suppressHydrationWarning
     >
       {isDark ? (
-        // Sun icon — click to go light
+        // Sun icon. Click to go light
         <svg
           width="16"
           height="16"
@@ -102,7 +102,7 @@ export default function ThemeToggle() {
           <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
         </svg>
       ) : (
-        // Moon icon — click to go dark
+        // Moon icon. Click to go dark
         <svg
           width="16"
           height="16"

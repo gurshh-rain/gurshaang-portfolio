@@ -110,7 +110,7 @@ const RoboticArm = () => {
                     {[
                         ["TOOLS",  "Fusion 360 · Blender"],
                         ["STATUS", "Completed"],
-                        ["YEAR",   "2026 — Current"],
+                        ["YEAR",   "2026 to Current"],
                     ].map(([label, value]) => (
                         <div key={label} className={styles.metaItem}>
                             <span className={styles.metaLabel}>{label}</span>
@@ -138,7 +138,7 @@ const RoboticArm = () => {
                     </div>
                 </section>
 
-                {/* ── IMAGE 1 — full bleed ── */}
+                {/* IMAGE 1 full bleed */}
                 <section
                     className={`${styles.imageFullBleed} ${styles.reveal}`}
                     onMouseEnter={() => { setCursorText("VIEW"); setCursorVisible(true); }}
@@ -146,12 +146,12 @@ const RoboticArm = () => {
                 >
                     <img
                         src="/SurgicalArm/Surgical-Arm.png"
-                        alt="Surgical arm render — front view"
+                        alt="Surgical arm render, front view"
                         className={styles.imageFullBleedImg}
                     />
                     <div className={styles.imageCaption}>
                         <span>FIG. 01</span>
-                        <span>Front elevation — full assembly</span>
+                        <span>Front elevation, full assembly</span>
                     </div>
                 </section>
 
@@ -196,7 +196,7 @@ const RoboticArm = () => {
                     >
                         <img
                             src="/SurgicalArm/Surgical-Arm2.png"
-                            alt="Surgical arm render — joint detail"
+                            alt="Surgical arm render, joint detail"
                             className={styles.splitImg}
                         />
                         <div className={styles.imageCaption}>

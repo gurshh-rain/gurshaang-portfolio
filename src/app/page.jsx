@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { usePreloaderDone } from "./components/PreloaderContext";
-import GooeyTextReveal from "./components/GooeyTextReveal";
 
 export default function Home() {
   const preloaderDone = usePreloaderDone();
@@ -10,21 +9,22 @@ export default function Home() {
   useEffect(() => {
     if (!preloaderDone) return;
 
-    const letters = document.querySelectorAll(".header .letter");
+    const nameLetters = document.querySelectorAll(".header h1 .letter");
+    const taglineLetters = document.querySelectorAll(".header .tagline .letter");
     const img = document.querySelector(".hero-img");
 
-    if (letters.length && img) {
-      letters.forEach((letter, i) => {
-        setTimeout(() => {
-          letter.classList.add("visible");
-        }, i * 50);
-      });
-      img.classList.add("visible");
-      const tagline = document.querySelector(".home .header .tagline");
-      if (tagline) {
-        setTimeout(() => tagline.classList.add("visible"), letters.length * 50 + 300);
-      }
-    }
+    if (img) img.classList.add("visible");
+
+    nameLetters.forEach((letter, i) => {
+      setTimeout(() => letter.classList.add("visible"), i * 50);
+    });
+
+    // tagline starts at the same time as the name but uses a tighter stagger
+    // so the whole sentence doesn't take too long
+    const taglineStagger = 12;
+    taglineLetters.forEach((letter, i) => {
+      setTimeout(() => letter.classList.add("visible"), i * taglineStagger);
+    });
   }, [preloaderDone]); // fires exactly when preloader signals done
 
   return (
@@ -39,9 +39,13 @@ export default function Home() {
               </span>
             ))}
           </h1>
-          <GooeyTextReveal delay={0.5}>
-            <p className="tagline">tron @ waterloo | building w physical ai, computer vision, and agents</p>
-          </GooeyTextReveal>
+          <p className="tagline">
+            {"tron @ waterloo | building w physical ai, computer vision, and agents".split("").map((char, i) => (
+              <span key={i} className="letter">
+                {char === " " ? "\u00A0" : char}
+              </span>
+            ))}
+          </p>
         </div>
 
         <div className="hero-img">
