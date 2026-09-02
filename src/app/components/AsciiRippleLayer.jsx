@@ -9,7 +9,6 @@ const GAP = 7; // px between characters (denser grid)
 const RIPPLE_FRAMES = 24; // frames for the ripple front to sweep center -> edge
 const FONT = '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace';
 
-// A single ASCII "pixel", ported from trybull's Pixel class:
 // appear -> grows to maxSize with distance-based delay, then shimmers;
 // disappear -> shrinks back to 0.
 function createGlyph(x, y, delay) {

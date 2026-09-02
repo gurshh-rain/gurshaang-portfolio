@@ -65,7 +65,7 @@ const Resume = () => {
         },
         {
             role: "Incoming",
-            org: "Watanomous [On-site]",
+            org: "Watonomous [On-site]",
             period: "Incoming",
             bullets: [
                 "Working on reinforcement-learning training for Waterloo’s first humanoid robot.",

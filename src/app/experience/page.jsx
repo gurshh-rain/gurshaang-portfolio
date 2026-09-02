@@ -50,7 +50,7 @@ const Experience = () => {
         },
         {
             role: "Incoming",
-            org: "Watanomous",
+            org: "Watonomous",
             period: "Incoming",
             desc: []
         }
