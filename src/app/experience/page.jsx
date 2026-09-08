@@ -30,16 +30,6 @@ const Experience = () => {
             ]
         },
         {
-            role: "ML / Computer Vision Contributor",
-            org: "Roboflow [Remote] | Computer vision, Data augmentation, VLMs",
-            period: "May 2026 – Present",
-            desc: [
-                "Built and deployed end-to-end computer vision projects spanning object detection, image classification, and robotics.",
-                "Designed data pipelines covering dataset collection, annotation, augmentation, and evaluation for production-ready models.",
-                "Explored zero-shot labeling, vision-language models (VLMs), and automated dataset-generation techniques."
-            ]
-        },
-        {
             role: "Frontend Developer",
             org: "FirstOpz [Remote] | TypeScript, Web Development",
             period: "Feb 2026 – June 2026",

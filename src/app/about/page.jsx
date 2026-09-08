@@ -76,9 +76,8 @@ const Studio = () => {
                                 Right now, I&apos;m focused on the intersection of{" "}
                                 <span>physical AI</span> and <span>agentic systems</span>.
                                 I&apos;m building tactile data infrastructure at{" "}
-                                <span>Phydata</span>, contributing computer vision
-                                workflows at <span>Roboflow</span>, and shipping
-                                interfaces that make complex tech feel simple at{" "}
+                                <span>Phydata</span> and shipping interfaces that
+                                make complex tech feel simple at{" "}
                                 <span>FirstOpz</span>.
                             </p>
                             <p>
