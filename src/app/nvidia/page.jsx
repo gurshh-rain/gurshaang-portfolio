@@ -45,7 +45,7 @@ const Nvidia = () => {
             <div className="revealer" />
             <main className={styles.main}>
 
-                {/* Video pinned to full viewport — sits behind everything */}
+                {/* Video pinned to full viewport, sits behind everything */}
                 <div className={styles.videoPin}>
                     <video
                         src= "https://w36n5ueyeirjmds2.public.blob.vercel-storage.com/0001-0339.MP4"

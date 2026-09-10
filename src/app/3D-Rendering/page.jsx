@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRevealer } from "../hooks/useRevealer";
+import GooeyTextReveal from "../components/GooeyTextReveal";
 
 const images = [
   { src: "slide-2.jpg", title: "HEY", className: "" },
@@ -39,8 +40,12 @@ const Render = () => {
     <>
       <div className="revealer"></div>
       <div className="title3D">
-        <h1>3D RENDERS</h1>
-        <h2>Here are some of my highlighted 3D projects.</h2>
+        <GooeyTextReveal>
+          <h1>3D RENDERS</h1>
+        </GooeyTextReveal>
+        <GooeyTextReveal delay={0.1}>
+          <h2>Here are some of my highlighted 3D projects.</h2>
+        </GooeyTextReveal>
       </div>
 
       <div className="gallery">

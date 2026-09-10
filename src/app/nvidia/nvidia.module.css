@@ -14,7 +14,7 @@
 .main {
     background: #080808;
     color: #ebebeb;
-    /* No overflow:hidden here — we need native scroll */
+    /* No overflow:hidden here; we need native scroll */
 }
 
 /* ─── Sticky video layer ────────────────────────────────────── */

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Preloader from "./Preloader";
 import Nav from "./Nav";
 import { PreloaderContext } from "./PreloaderContext";
+import AsciiRippleLayer from "./AsciiRippleLayer";
 
 export default function PreloaderWrapper({ children }) {
   const [done, setDone] = useState(false);
@@ -12,6 +13,7 @@ export default function PreloaderWrapper({ children }) {
     <PreloaderContext.Provider value={done}>
       {!done && <Preloader onComplete={() => setDone(true)} />}
       <Nav />
+      <AsciiRippleLayer />
       <div style={{ visibility: done ? "visible" : "hidden" }}>
         {children}
       </div>
