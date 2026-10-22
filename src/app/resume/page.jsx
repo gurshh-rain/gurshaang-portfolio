@@ -45,16 +45,6 @@ const Resume = () => {
             ],
         },
         {
-            role: "ML / Computer Vision Contributor",
-            org: "Roboflow [Remote] | Computer vision, Data augmentation, VLMs",
-            period: "May 2026 – Present",
-            bullets: [
-                "Built and deployed end-to-end computer vision projects spanning object detection, image classification, and robotics.",
-                "Designed data pipelines covering dataset collection, annotation, augmentation, and evaluation for production-ready models.",
-                "Explored zero-shot labeling, vision-language models (VLMs), and automated dataset-generation techniques.",
-            ],
-        },
-        {
             role: "Frontend Developer",
             org: "FirstOpz [Remote] | TypeScript, Web Development",
             period: "Feb 2026 – June 2026",
@@ -544,7 +534,7 @@ const Resume = () => {
                                     <strong>ML &amp; Computer Vision:</strong> PyTorch, scikit-learn, OpenCV, MediaPipe, Ultralytics YOLO, Claude Code, Agentic AI, Pandas, NumPy, SciPy, Matplotlib, Seaborn
                                 </li>
                                 <li>
-                                    <strong>Tools &amp; Platforms:</strong> ROS2, Gazebo, MoveIt2, Nav2, Isaac Sim, MATLAB, Git/GitHub, Arduino, Google Colab/Jupyter, REST APIs, Roboflow
+                                    <strong>Tools &amp; Platforms:</strong> ROS2, Gazebo, MoveIt2, Nav2, Isaac Sim, MATLAB, Git/GitHub, Arduino, Google Colab/Jupyter, REST APIs
                                 </li>
                                 <li>
                                     <strong>CAD:</strong> SolidWorks, Fusion 360, Blender
