@@ -1,7 +1,6 @@
 "use client";
 import { useRevealer } from "../hooks/useRevealer";
 import { useEffect } from "react";
-import AsciiGlitchRipple from "../components/AsciiGlitchRipple";
 import GooeyTextReveal from "../components/GooeyTextReveal";
 
 
@@ -30,7 +29,7 @@ const Experience = () => {
             ]
         },
         {
-            role: "Frontend Developer",
+            role: "Software Engineer",
             org: "FirstOpz [Remote] | TypeScript, Web Development",
             period: "Feb 2026 – June 2026",
             desc: [
@@ -92,9 +91,7 @@ const Experience = () => {
                                     </span>
                                 </div>
                                 <div className="placeholder-body">
-                                    <h2>
-                                        <AsciiGlitchRipple as="span">{item.role.toUpperCase()}</AsciiGlitchRipple>
-                                    </h2>
+                                    <h2>{item.role.toUpperCase()}</h2>
                                     <GooeyTextReveal mode="scroll" start="top 85%" delay={0.05}>
                                         <h3>{item.org}</h3>
                                         {Array.isArray(item.desc) && item.desc.length > 0 ? (
