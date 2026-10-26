@@ -45,7 +45,7 @@ const Resume = () => {
             ],
         },
         {
-            role: "Frontend Developer",
+            role: "Software Engineer",
             org: "FirstOpz [Remote] | TypeScript, Web Development",
             period: "Feb 2026 – June 2026",
             bullets: [
@@ -481,8 +481,6 @@ const Resume = () => {
                         Gurshaan Gill
                     </h2>
                     <p>
-                        <a href="tel:647-561-9192">647-561-9192</a>
-                        {" | "}
                         <a href="mailto:gurshaan.gill@uwaterloo.ca">
                             gurshaan.gill@uwaterloo.ca
                         </a>
